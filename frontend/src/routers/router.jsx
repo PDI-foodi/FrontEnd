@@ -1,20 +1,8 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import LoginPage from "../routes/login/loginPage";
-import SignupPage from "../routes/signup/signupPage";
 import { mainRouter } from "./main-router";
+import { authRouter } from "./auth-router";
 
-export const routerObj = [
-  {
-    path: "/",
-    element: <LoginPage />,
-    index: true, //
-  },
-  {
-    path: "/signup",
-    element: <SignupPage />,
-  },
-  mainRouter,
-];
+export const routerObj = [...authRouter, ...mainRouter];
 const router = createBrowserRouter(routerObj);
 export default router;
