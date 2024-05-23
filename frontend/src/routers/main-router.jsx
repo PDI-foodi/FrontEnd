@@ -11,6 +11,7 @@ const mainRouter = [
       {
         path: "",
         element: <MainPage />,
+        index: true,
       },
       {
         path: ":detailId",

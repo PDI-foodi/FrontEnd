@@ -1,0 +1,19 @@
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1200px;
+  margin: 0px auto;
+}
+.logo {
+  width: 75px;
+  height: 75px;
+}
+.user_info {
+  margin-right: 50px;
+}
+.line {
+  border-bottom: 5px solid #04a34b;
+}
