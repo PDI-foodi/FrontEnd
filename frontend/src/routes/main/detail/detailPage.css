@@ -1,0 +1,19 @@
+.parent {
+  width: 100vw;
+  height: 100vh;
+}
+
+.detail-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 130px);
+}
+.detail_item {
+  width: 600px;
+  height: 700px;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+}
