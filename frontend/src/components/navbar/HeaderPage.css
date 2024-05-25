@@ -1,5 +1,4 @@
 .header {
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,5 +14,5 @@
   margin-right: 50px;
 }
 .line {
-  border-bottom: 5px solid #04a34b;
+  border-bottom: 3px solid #04a34b;
 }
