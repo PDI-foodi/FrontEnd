@@ -1,9 +1,10 @@
 import {React,useEffect,useState} from 'react'
+import axios from "axios";
+export default function Sort() {
 
-export default function sort() {
+    const [data, setData] = useState([]);
+    const [show, setShow] = useState(false);
 
-    const [data,setData]=useState([])
-    const [show,setShow]=useSTate('')
 
     const all=async ()=>{
       const allitems=await axios.get("/sort");
@@ -30,7 +31,7 @@ export default function sort() {
     const japanese=async()=>{
       const japanese=await axios.get("/sort/japanese")
       setShow(true)
-      setData(japanese)
+      setData(japanese.data)
     }
     
     const desert=async()=>{
@@ -60,13 +61,13 @@ export default function sort() {
         setShow &&(
           <div>
 
-            data.map((elem,index)=>{
-              <div key={index+1} onClick={()=>UseNavigate()}> 
+            {data.map((elem,index)=>(
+              <div key={index+1} > 
               <img src={elem.imglink}></img>
               {elem.name}
               {elem.category}
               </div>
-            })
+            ))}
 
 
             </div>
