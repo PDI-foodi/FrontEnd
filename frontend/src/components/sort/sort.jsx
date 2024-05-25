@@ -9,7 +9,7 @@ export default function Sort() {
     const all=async ()=>{
       const allitems=await axios.get("/sort");
       setShow(true)
-      return allitems;
+      setData(allitems.data)
     }
 
     const jjim=()=>{
@@ -19,13 +19,13 @@ export default function Sort() {
     const western=async ()=>{
       const western=await axios.get("/sort/western")
       setShow(true)
-      return western
+      setData(western.data)
     }
     
     const korea=async ()=>{
-      const western=await axios.get("/sort/western")
+      const korea=await axios.get("/sort/korea")
       setShow(true)
-      return western
+      setData(korea.data)
     }
     
     const japanese=async()=>{
@@ -37,12 +37,12 @@ export default function Sort() {
     const desert=async()=>{
       const desert=await axios.get("/sort/desert")
       setShow(true)
-      setData(desert)
+      setData(desert.data)
     }
     const fastfood=async ()=>{
       const fastfood=await axios.get("/sort/fastfood")
       setShow(true)
-      setData(fastfood)
+      setData(fastfood.data)
     }
    
     
