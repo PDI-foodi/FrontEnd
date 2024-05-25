@@ -1,6 +1,6 @@
 import './search.css'
 import {React,useState} from 'react'
-
+import axios from 'axios';
 
 export default function Search() {
 
@@ -8,13 +8,20 @@ export default function Search() {
     const [result,setResult]=useState('');
     const [show,setShow]=useState(false);
 
-    const url="http://localhost/3000";//express.js 포트 변경 예정
+    const url="http://localhost:5000/search/api/data";//express.js 포트 변경 예정
     const headers='';//회원 로직 나중에 추가예정
 
-    const searchBar = async ()=>{
+    
+    const searchBar = ()=>{
         setShow(true)
-        const search=await axios.get(url+`/?value=${text}`);
-        setResult(search);
+        console.log(url)
+        axios.get(url+`?value=${text}`).then((response)=>{
+            setResult(response.data.result[0]);
+            
+        }
+        )
+        
+        
     }
 
     const close =()=>{
@@ -35,7 +42,9 @@ export default function Search() {
 
         {
             show&&(result?<div>
-                    앗! 결과값이 나왔습니다. 결과값은? {result}입니다!
+                            앗 찾았습니다! 결과값은? {result.name}입니다!
+
+                            
                     <button>상세페이지로 이동하기</button>
                     <button onClick={close}>X</button>
                 </div>
