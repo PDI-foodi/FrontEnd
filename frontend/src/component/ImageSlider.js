@@ -15,6 +15,20 @@ const ImageSlider = ({ restaurants }) => {
     centerMode: true,
     variableWidth: true,
     centerPadding: "1",
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
