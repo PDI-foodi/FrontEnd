@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Rank.css";
 import ImageSlider from "./ImageSlider.js";
 
 export default function Rank() {
