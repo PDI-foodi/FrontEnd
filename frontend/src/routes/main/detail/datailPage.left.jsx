@@ -1,4 +1,6 @@
+import "./detailPage.left.css";
+
 const DetailPageLeft = () => {
-  return <di>left</di>;
+  return <div className="detail_item">helo</div>;
 };
 export default DetailPageLeft;
