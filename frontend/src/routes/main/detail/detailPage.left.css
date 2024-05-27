@@ -23,3 +23,12 @@
   margin: 5px 0px;
 }
 
+.food_star {
+  display: flex;
+  align-items: center;
+}
+.star_score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+}
