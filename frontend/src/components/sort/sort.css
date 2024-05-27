@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontRegular.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.category {
+  font-family: NPSfontBold;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.category div {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category div:hover {
+  background-color: #f0f0f0;
+}
+
+.category img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.all-icon{
+  margin-right: 10px;
+}
+
+.flour-icon{
+  width: 20px !important;
+  height: 25px !important;
+}
+
+.western-icon{
+  width: 35px !important;
+  height: 25px !important;
+}
+
+.japanese-icon{
+  width: 35px !important;
+  height: 25px !important;
+}
+
+.show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}

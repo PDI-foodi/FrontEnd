@@ -1,0 +1,35 @@
+.slider-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-dots {
+  bottom: 0px;
+}
+
+.slick-slide img {
+  aspect-ratio: 16 / 10; /* 원하는 비율로 변경 가능 */
+  filter: brightness(0.6);
+  /* border-radius: 30px; */
+}
+
+.slick-center img {
+  filter: brightness(1);
+}

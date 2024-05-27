@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontRegular.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.searchBar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid #ccc;
+    background-color: white(184, 182, 182);
+    margin: 0 auto;
+    width:600px;
+    border-radius: 50px;
+    margin-bottom:30px;
+}
+
+.searchBar input{
+    border:none;
+    outline:none;
+    background: white;
+    font-size:16px;
+    flex-grow:1;
+    margin:10px 10px 10px 15px;
+    border-radius: 50px;
+}
+.searchIcon{
+    font-size:20px;
+    cursor:pointer;
+    margin-right: 15px;
+}
+
+.result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-family: NPSfontBold;
+  margin-top: 10px;
+}
+
+.moveButton{
+  border: 1px solid gray;
+  border-radius: 30px;
+  background-color: white;
+  margin-left: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cancelButton{
+  margin-left: 5px;
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
