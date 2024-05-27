@@ -6,6 +6,7 @@ import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
 import { useEffect, useState } from "react";
 import axios from "axios";
+const no_img_url = "https://donghyub.doit-partners.com/images/noimage.gif";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
@@ -22,7 +23,11 @@ const DetailPageLeft = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setImage(res.data);
+        const images = res.data.length ? res.data : [no_img_url];
+        while (res.data.length < 3) {
+          images.push(no_img_url);
+        }
+        setImage(images);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -39,12 +44,14 @@ const DetailPageLeft = (props) => {
         <div className="detail_img">
           {image.map((e, i) => {
             return (
-              <img
-                key={i}
-                src={e}
-                alt="맛집 사진"
-                className="detail_food_img"
-              />
+              <div className="img_div">
+                <img
+                  key={i}
+                  src={e}
+                  alt="맛집 사진"
+                  className="detail_food_img"
+                />
+              </div>
             );
           })}
         </div>
