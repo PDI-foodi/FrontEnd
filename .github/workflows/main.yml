@@ -22,4 +22,3 @@ jobs:
         script: |
           cd /home/ec2-user
           git pull origin main
-          npm install  
