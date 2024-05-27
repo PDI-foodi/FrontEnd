@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 .comment_add_btn {
   padding: 10px 20px;
@@ -21,4 +22,9 @@
 .comment_add_btn:hover {
   opacity: 1;
   cursor: pointer;
+}
+.review_item {
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin-bottom: 5px;
 }

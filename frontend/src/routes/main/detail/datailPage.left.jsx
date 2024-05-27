@@ -4,24 +4,52 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
+import { useEffect, useState } from "react";
+import axios from "axios";
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
   console.log(props.data);
+  const [image, setImage] = useState([]);
+  const menu = props.data.name?.split(" ")[0];
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const res = await axios.get(`/image/naver?value=${menu}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setImage(res.data);
+      } catch (error) {
+        console.error("Error fetching image:", error);
+      }
+    };
+
+    if (menu) {
+      fetchImage();
+    }
+  }, [menu]); // menu를 의존성 배열에 추가합니다.
+  console.log(image);
   return (
     <div className="detail_left_item">
       <section>
-        <div>
-          <img
-            src={props.data.imglink}
-            alt="맛집 사진"
-            className="detail_food_img"
-          />
-          <img
-            src={props.data.imglink}
-            alt="맛집 사진"
-            className="detail_food_img"
-          />
+        <div className="detail_img">
+          {image.map((e, i) => {
+            return (
+              <img
+                key={i}
+                src={e}
+                alt="맛집 사진"
+                className="detail_food_img"
+              />
+            );
+          })}
         </div>
+      </section>
+      <section>
         <div className="food_info">
           <div className="food_title_div">
             <h1>{props.data.name}</h1>

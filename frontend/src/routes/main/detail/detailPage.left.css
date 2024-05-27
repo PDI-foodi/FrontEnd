@@ -5,12 +5,20 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+}
+.detail_img {
+  display: flex;
+  overflow-x: scroll;
 }
 
 .detail_food_img {
-  width: 50%;
+  width: 220px;
   height: 220px;
+  object-fit: cover;
   border-radius: 5px 0px 0px 0px;
+  display: block;
+  margin: auto; /* 작은 이미지를 중앙에 맞춥니다 */
 }
 .food_title_div {
   display: flex;

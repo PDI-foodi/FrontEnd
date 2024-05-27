@@ -11,6 +11,7 @@ const token =
 const DetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
+
   useEffect(() => {
     const test = async () => {
       const res = await axios.get(`/detail/${params.detailId}`, {
