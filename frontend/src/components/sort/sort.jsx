@@ -3,7 +3,6 @@ import axios from "axios";
 import "./sort.css";
 import { FaListUl } from "react-icons/fa";
 import Card from "../rank/Card.jsx";
-import "../rank/css/Card.css";
 
 export default function Sort() {
   const [data, setData] = useState([]);
@@ -107,30 +106,46 @@ export default function Sort() {
           전체
         </div>
         <div className="jjim" onClick={jjim}>
-          <img src="/img/jjim.svg" className="jjim-icon" />찜
+          <img src="/img/jjim.svg" className="jjim-icon" alt="jjim-icon" />찜
         </div>
         <div className="korea" onClick={korea}>
-          <img src="/img/korea.png" className="korea-icon" />
+          <img src="/img/korea.png" className="korea-icon" alt="korea-icon" />
           한식
         </div>
         <div className="western" onClick={western}>
-          <img src="/img/western.png" className="western-icon" />
+          <img
+            src="/img/western.png"
+            className="western-icon"
+            alt="western-icon"
+          />
           양식
         </div>
         <div className="japanese" onClick={japanese}>
-          <img src="/img/japanese.svg" className="japanese-icon" />
+          <img
+            src="/img/japanese.svg"
+            className="japanese-icon"
+            alt="japanese-icon"
+          />
           일식
         </div>
         <div className="fastfood" onClick={fastfood}>
-          <img src="/img/fastfood.svg" className="fastfood-icon" />
+          <img
+            src="/img/fastfood.svg"
+            className="fastfood-icon"
+            alt="fastfood-icon"
+          />
           패스트푸드
         </div>
         <div className="flour" onClick={flour}>
-          <img src="/img/flour.png" className="flour-icon" />
+          <img src="/img/flour.png" className="flour-icon" alt="flour-icon" />
           분식
         </div>
         <div className="dessert" onClick={dessert}>
-          <img src="/img/dessert.svg" className="dessert-icon" />
+          <img
+            src="/img/dessert.svg"
+            className="dessert-icon"
+            alt="dessert-icon"
+          />
           디저트
         </div>
         <div className="etc" onClick={etc}>
@@ -138,22 +153,26 @@ export default function Sort() {
         </div>
       </div>
       {setShow && (
-        <div className="show">
-          {data.map((elem, index) => (
-            <div key={index + 1}>
-              <Card
-                id={elem._id}
-                img={elem.imglink}
-                name={elem.name}
-                rate={elem.rate}
-                category={elem.category}
-              />
-              {/* <img src={elem.imglink}></img>
-              {elem.name}
-              {elem.category}
-              {elem.rate} */}
-            </div>
-          ))}
+        <div>
+          <div className="show">
+            {data.map((elem, index) => (
+              <div key={index + 1} className="sort-card">
+                <Card
+                  id={elem._id}
+                  img={elem.imglink}
+                  name={elem.name}
+                  rate={elem.rate}
+                  category={elem.category}
+                />
+                {/* <img src={elem.imglink}></img>
+                {elem.name}
+                {elem.category}
+                {elem.rate} */}
+              </div>
+            ))}
+            
+          </div>
+          <div className="loading-spinner">Loading...</div>
         </div>
       )}
     </div>
