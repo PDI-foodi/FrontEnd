@@ -38,6 +38,7 @@ const ImageSlider = ({ restaurants }) => {
         {restaurants.map((restaurant, index) => (
           <div key={index}>
             <Card
+              id={restaurant.id}
               img={restaurant.imglink}
               name={restaurant.name}
               rate={restaurant.rate}
