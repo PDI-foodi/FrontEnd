@@ -59,7 +59,9 @@ const DetailPageLeft = (props) => {
       <section>
         <div className="food_info">
           <div className="food_title_div">
-            <h1>{props.data.name}</h1>
+            <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
+              {props.data.name}
+            </span>
             <FavoriteIcon className="like_icon" />
           </div>
 
