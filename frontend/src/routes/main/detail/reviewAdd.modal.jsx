@@ -2,10 +2,13 @@ import Modal from "react-bootstrap/Modal";
 import "./reviewAdd.modal.css";
 import CreateIcon from "@mui/icons-material/Create";
 import { useState } from "react";
+import Rate from "rc-rate";
+import "rc-rate/assets/index.css";
 
 const ReviewAddModal = (props) => {
   const [text, setText] = useState("");
   const [showPencil, setShowPencil] = useState(true);
+  const [rate, setRate] = useState(2);
 
   const onChangeReview = (e) => {
     setText(e.target.value);
@@ -35,7 +38,15 @@ const ReviewAddModal = (props) => {
           {showPencil && <CreateIcon className="pencil_icon" />}
           <span className="text_length">{`${text.length} / 400`}</span>
         </div>
-
+        <div className="modal_star">
+          <span className="modal_star_text">별점을 입력해보세요</span>
+          <Rate
+            className="star_rate"
+            value={rate}
+            allowHalf
+            onChange={(v) => setRate(v)}
+          />
+        </div>
         <div className="footer_btn_div">
           <button onClick={props.handleClose} className="f_btn cancel_btn">
             <span>이전</span>
@@ -44,8 +55,6 @@ const ReviewAddModal = (props) => {
             등록
           </button>
         </div>
-        <div className="row-line"></div>
-        <div className=""></div>
       </Modal.Body>
     </Modal>
   );

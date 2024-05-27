@@ -15,6 +15,7 @@
   border-radius: 10px;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
 }
 .pencil_icon {
   position: absolute;
@@ -69,4 +70,33 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+.modal_star {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal_star_text {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.react-rater {
+  display: inline-block;
+  line-height: normal;
+
+  > * {
+    display: inline-block;
+  }
+}
+.rate-star-full .rc-rate-star-second {
+  color: gold;
+}
+.rate-star-full .rc-rate-star-second:hover {
+  color: gold;
+}
+.rc-rate-star {
+  font-size: 30px !important;
 }
