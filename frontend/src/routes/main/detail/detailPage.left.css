@@ -52,3 +52,24 @@
   margin-top: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.food_location_div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.food_location_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.food_location_text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.map_icon {
+  color: rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+  cursor: pointer;
+}

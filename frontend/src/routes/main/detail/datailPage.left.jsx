@@ -1,6 +1,8 @@
 import "./detailPage.left.css";
 import StarRatings from "react-star-ratings";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 
 const DetailPageLeft = (props) => {
   console.log(props.data);
@@ -38,6 +40,23 @@ const DetailPageLeft = (props) => {
             />
             <span className="star_score">{props.data.rate}점</span>
             <span className="review_count">5명의 평가</span>
+          </div>
+        </div>
+        <div className="contour_line"></div>
+        <div className="food_location_div">
+          <div className="food_location_item">
+            <FmdGoodIcon className="map_icon" />
+            <div className="food_location_text">
+              <span>{props.data.location}</span>
+              <span>
+                현재 위치로부터{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
+              </span>
+            </div>
+          </div>
+          <div className="food_location_item">
+            <PhoneEnabledIcon className="map_icon" />
+            <span>{props.data.phoneNumber}</span>
           </div>
         </div>
         <div className="contour_line"></div>
