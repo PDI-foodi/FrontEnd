@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
-          cd /path/to/your/app
+          cd /home/ec2-user/
           git pull origin main
           # Your deployment commands here, e.g., restarting services
           sudo systemctl restart your-app.service
