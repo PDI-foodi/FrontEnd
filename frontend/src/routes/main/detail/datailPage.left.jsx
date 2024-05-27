@@ -3,11 +3,12 @@ import StarRatings from "react-star-ratings";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import DetailReviewPage from "./detailPage.review";
 
 const DetailPageLeft = (props) => {
   console.log(props.data);
   return (
-    <div className="detail_item">
+    <div className="detail_left_item">
       <section>
         <div>
           <img
@@ -61,6 +62,7 @@ const DetailPageLeft = (props) => {
         </div>
         <div className="contour_line"></div>
       </section>
+      <DetailReviewPage />
     </div>
   );
 };

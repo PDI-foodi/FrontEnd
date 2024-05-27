@@ -1,6 +1,6 @@
-.detail_item {
+.detail_left_item {
   width: 600px;
-  height: 700px;
+  height: 750px;
   margin: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -9,7 +9,7 @@
 
 .detail_food_img {
   width: 50%;
-  height: 260px;
+  height: 220px;
   border-radius: 5px 0px 0px 0px;
 }
 .food_title_div {
