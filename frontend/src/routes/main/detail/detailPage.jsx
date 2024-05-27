@@ -22,7 +22,6 @@ const DetailPage = () => {
     };
     test();
   }, []);
-  console.log(data);
   return (
     <div className="parent">
       <HeaderPage />
