@@ -1,12 +1,14 @@
-import Compoent from "../../component/Compoent";
-import Rank from "../../component/Rank";
+import Rank from "../../components/rank/Rank";
 import HeaderPage from "../../components/navbar/HeaderPage";
+import Search from "../../components/search/search";
+import Sort from "../../components/sort/sort";
 const MainPage = () => {
   return (
     <div>
       <HeaderPage />
       <Rank />
-      <Compoent />
+      <Search/>
+      <Sort/>
     </div>
   );
 };
