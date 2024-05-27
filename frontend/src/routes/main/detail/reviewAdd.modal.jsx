@@ -13,13 +13,13 @@ const ReviewAddModal = (props) => {
   };
 
   return (
-    <Modal show={props.show} onHide={props.handleClose} backdrop={false}>
+    <Modal show={props.show} onHide={props.handleClose} backdrop={true}>
       <Modal.Header closeButton>
         <Modal.Title style={{ padding: "20px" }}>
           <div className="modal_header">
             <span className="modal_header_text">
-              다녀온 곳의 <br />
-              리뷰를 써 보세요!
+              다녀온 곳의
+              <br /> 리뷰를 써 보세요!
             </span>
           </div>
         </Modal.Title>
@@ -44,6 +44,8 @@ const ReviewAddModal = (props) => {
             등록
           </button>
         </div>
+        <div className="row-line"></div>
+        <div className=""></div>
       </Modal.Body>
     </Modal>
   );
