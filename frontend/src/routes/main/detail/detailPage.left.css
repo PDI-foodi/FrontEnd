@@ -12,9 +12,14 @@
   height: 260px;
   border-radius: 5px 0px 0px 0px;
 }
+.food_title_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .food_info {
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -22,7 +27,9 @@
   color: rgba(0, 0, 0, 0.4);
   margin: 5px 0px;
 }
-
+.review_count {
+  color: rgba(0, 0, 0, 0.4);
+}
 .food_star {
   display: flex;
   align-items: center;
@@ -30,5 +37,18 @@
 .star_score {
   font-size: 16px;
   font-weight: bold;
-  margin-left: 10px;
+  margin: 0px 10px;
+}
+
+.like_icon {
+  color: rgba(0, 0, 0, 0.1);
+  font-size: 2rem !important;
+}
+.like_icon:hover {
+  color: gold;
+  cursor: pointer;
+}
+.contour_line {
+  margin-top: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }

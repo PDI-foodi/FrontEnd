@@ -1,5 +1,6 @@
 import "./detailPage.left.css";
 import StarRatings from "react-star-ratings";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const DetailPageLeft = (props) => {
   console.log(props.data);
@@ -19,7 +20,11 @@ const DetailPageLeft = (props) => {
           />
         </div>
         <div className="food_info">
-          <h1>{props.data.name}</h1>
+          <div className="food_title_div">
+            <h1>{props.data.name}</h1>
+            <FavoriteIcon className="like_icon" />
+          </div>
+
           <span className="food_category">{props.data.category}</span>
           <div className="food_star">
             <StarRatings
@@ -32,8 +37,10 @@ const DetailPageLeft = (props) => {
               starSpacing="2px" // 별 간의 간격을 지정합니다.
             />
             <span className="star_score">{props.data.rate}점</span>
+            <span className="review_count">5명의 평가</span>
           </div>
         </div>
+        <div className="contour_line"></div>
       </section>
     </div>
   );
