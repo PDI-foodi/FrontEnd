@@ -22,5 +22,4 @@ jobs:
         script: |
           cd /home/ec2-user/
           git pull origin main
-          # Your deployment commands here, e.g., restarting services
-          sudo systemctl restart your-app.service
+          npm install  
