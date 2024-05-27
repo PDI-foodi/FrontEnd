@@ -6,3 +6,20 @@
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
 }
+
+.detail_food_img {
+  width: 50%;
+  height: 260px;
+  border-radius: 5px 0px 0px 0px;
+}
+
+.food_info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.food_category {
+  color: rgba(0, 0, 0, 0.4);
+  margin: 5px 0px;
+}
+
