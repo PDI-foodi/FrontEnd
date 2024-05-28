@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'NPSfontBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontRegular.woff2') format('woff2');
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontRegular.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
 }
@@ -34,28 +35,36 @@
   margin-right: 10px;
 }
 
-.all-icon{
+.all-icon {
   margin-right: 10px;
 }
 
-.flour-icon{
+.flour-icon {
   width: 20px !important;
   height: 25px !important;
 }
 
-.western-icon{
+.western-icon {
   width: 35px !important;
   height: 25px !important;
 }
 
-.japanese-icon{
+.japanese-icon {
   width: 35px !important;
   height: 25px !important;
 }
 
-.show{
+.show {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 30px;
+  margin: 0px 260px 0px 200px;
+}
+
+.sort-cards {
+  width: 250px;
+  height: 330px;
+  box-sizing: border-box;
 }
