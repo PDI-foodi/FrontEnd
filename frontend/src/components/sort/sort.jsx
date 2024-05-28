@@ -2,7 +2,7 @@ import { React, useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./sort.css";
 import { FaListUl,FaRegArrowAltCircleRight } from "react-icons/fa";
-import Card from "../rank/Card.jsx";
+import Card from "./sortcard.jsx";
 
 export default function Sort() {
   const [data, setData] = useState([]);

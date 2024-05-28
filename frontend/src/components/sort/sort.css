@@ -10,7 +10,7 @@
   font-family: NPSfontBold;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .category div {
@@ -55,12 +55,13 @@
 }
 
 .show {
+  margin: 0 auto;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin: 0px 260px 0px 200px;
 }
 
 .sort-cards {
