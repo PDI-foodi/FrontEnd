@@ -1,7 +1,7 @@
 import { React, useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./sort.css";
-import { FaListUl } from "react-icons/fa";
+import { FaListUl,FaRegArrowAltCircleRight } from "react-icons/fa";
 import Card from "../rank/Card.jsx";
 
 export default function Sort() {
@@ -44,7 +44,13 @@ export default function Sort() {
     setData(temp);
   };
 
-  const jjim = () => {};
+  const jjim = async () => {
+    const like = await axios.get("http://localhost:5000/like");
+    setCurrentIndex(itemsPerPage);
+    setShow(true);
+    const temp = like.data;
+    setData(temp);
+  };
 
   const western = async () => {
     const western = await axios.get("http://localhost:5000/sort/western");
@@ -185,6 +191,7 @@ export default function Sort() {
         <div className="etc" onClick={etc}>
           기타
         </div>
+        {/* <FaRegArrowAltCircleRight className="arrows"/> */}
       </div>
       {show && <div className="show">{renderMoreItems()}</div>}
     </div>
