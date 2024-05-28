@@ -16,8 +16,7 @@ const HeaderPage = () => {
           className="logo"
           onClick={handleCardClick}
         />
-        
-        <span className="user_info">환영합니다 --님</span>
+        <span className="user_info">환영하니다 --님</span>
       </div>
       <div className="line"></div>
     </>

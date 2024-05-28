@@ -1,0 +1,85 @@
+.detail_left_item {
+  width: 600px;
+  height: 750px;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+}
+.detail_img {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: scroll;
+}
+.img_div {
+  width: 220px;
+  height: 220px;
+  overflow-x: scroll;
+}
+.detail_food_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.food_title_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.food_info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.food_category {
+  color: rgba(0, 0, 0, 0.4);
+  margin: 5px 0px;
+}
+.review_count {
+  color: rgba(0, 0, 0, 0.4);
+}
+.food_star {
+  display: flex;
+  align-items: center;
+}
+.star_score {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px 10px;
+}
+
+.like_icon {
+  color: rgba(0, 0, 0, 0.1);
+  font-size: 2rem !important;
+}
+.like_icon:hover {
+  color: gold;
+  cursor: pointer;
+}
+.contour_line {
+  margin-top: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.food_location_div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.food_location_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.food_location_text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.map_icon {
+  color: rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+  cursor: pointer;
+}
