@@ -54,7 +54,7 @@ export default function Search() {
             <MdCancel className="cancelButton" onClick={close}/>
           </div>
         ) : (
-          <div>검색 결과가 없습니다.</div>
+          <div className="result">검색 결과가 없습니다.</div>
         ))}
     </div>
   );

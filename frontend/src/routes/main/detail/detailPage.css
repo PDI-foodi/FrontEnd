@@ -1,0 +1,11 @@
+.parent {
+  width: 100vw;
+  height: 100vh;
+}
+
+.detail-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
