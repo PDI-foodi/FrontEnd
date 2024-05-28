@@ -37,7 +37,6 @@ const DetailPageLeft = (props) => {
       fetchImage();
     }
   }, [menu]); // menu를 의존성 배열에 추가합니다.
-  console.log(image);
   return (
     <div className="detail_left_item">
       <section>
