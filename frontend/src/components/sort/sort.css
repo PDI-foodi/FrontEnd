@@ -58,9 +58,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 30px;
+  margin: 0px 260px 0px 200px;
 }
 
-.sort-card {
+.sort-cards {
   width: 250px;
+  height: 330px;
+  box-sizing: border-box;
 }
