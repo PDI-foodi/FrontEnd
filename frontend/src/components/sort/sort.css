@@ -10,7 +10,7 @@
   font-family: NPSfontBold;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .category div {
@@ -54,17 +54,47 @@
   height: 25px !important;
 }
 
-.show {
+.show2 {
+  margin: 0 auto;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin: 0px 260px 0px 200px;
 }
 
 .sort-cards {
   width: 250px;
-  height: 330px;
+  height: 300px;
   box-sizing: border-box;
 }
+
+/* .arrow {
+  display: none;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+@media (max-width: 1150px) {
+  .etc {
+    display: none !important;
+  }
+  .arrow {
+    display: flex;
+  }
+}
+
+@media (max-width: 1100px) {
+  .dessert {
+    display: none !important;
+  }
+}
+
+@media (max-width: 950px) {
+  .flour {
+    display: none !important;
+  }
+} */
