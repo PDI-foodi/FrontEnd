@@ -1,0 +1,52 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.login > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 25px;
+}
+
+.login p {
+  margin: 0;
+  width: 70px;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bolder;
+}
+
+.login input {
+  flex-grow: 1;
+  height: 40px;
+  padding: 8px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d7ecd7;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button.btn-primary {
+  width: 130px;
+  padding: 7px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #00a44b;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+button.btn-primary:hover {
+  background-color: #007836; /* 호버 시 배경 색상 변경 */
+}
