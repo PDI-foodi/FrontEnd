@@ -23,8 +23,3 @@
   opacity: 1;
   cursor: pointer;
 }
-.review_item {
-  height: 70px;
-  background-color: rgba(0, 0, 0, 0.05);
-  margin-bottom: 5px;
-}
