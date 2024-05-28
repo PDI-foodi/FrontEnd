@@ -1,0 +1,32 @@
+
+
+.all{
+    display:flex;
+
+    justify-content: center;
+    flex-direction: column;
+    margin-top:6vh;
+    
+}
+h2{
+    padding-bottom:3vh;
+    font-weight:bold;
+    text-align: center;
+}
+.Random{
+    display:flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.Random Image{
+    width:10vh;
+    height:10vh;
+}
+.button{
+    gap:5vh;
+    display:flex;
+    flex-direction: row;
+    padding-top:5vh;
+    margin:0 auto;
+}
