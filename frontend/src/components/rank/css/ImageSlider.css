@@ -25,9 +25,7 @@
 }
 
 .slick-slide img {
-  aspect-ratio: 16 / 10; /* 원하는 비율로 변경 가능 */
   filter: brightness(0.6);
-  /* border-radius: 30px; */
 }
 
 .slick-center img {
