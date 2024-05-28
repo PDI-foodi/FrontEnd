@@ -1,4 +1,12 @@
+import Logo from "../../components/login/Logo";
+import Login from "../../components/login/Login";
+
 const LoginPage = () => {
-  return <div>login</div>;
+  return (
+    <div>
+      <Logo />
+      <Login />
+    </div>
+  );
 };
 export default LoginPage;

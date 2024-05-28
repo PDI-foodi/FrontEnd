@@ -1,0 +1,37 @@
+.review_item {
+  height: 70px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.review_info_div {
+  display: flex;
+  align-items: flex-start;
+}
+.review_info {
+  display: flex;
+  flex-direction: column;
+}
+.review_info span:nth-child(1) {
+  font-size: 15px;
+}
+.review_info span:nth-child(2) {
+  font-size: 15px;
+}
+.user_icon {
+  width: 35px !important;
+  height: 35px !important;
+  margin-right: 10px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.review_date {
+  margin-left: 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.heart_icon {
+  color: gold;
+}

@@ -1,6 +1,8 @@
 import "./detailPage.review.css";
 import { useState } from "react";
 import ReviewAddModal from "./reviewAdd.modal";
+import ReviewItem from "./reviewItem";
+import Button from "react-bootstrap/Button";
 
 const detailReviewPage = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -26,12 +28,13 @@ const detailReviewPage = () => {
             리뷰 작성하기
           </button>
         </div>
-        <div className="review_item"></div>
-        <div className="review_item"></div>
-        <div className="review_item"></div>
-        <div className="review_item"></div>
-        <div className="review_item"></div>
-        <div className="review_item"></div>
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
+        <ReviewItem />
       </section>
     </>
   );
