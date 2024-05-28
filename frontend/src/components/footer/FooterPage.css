@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "TTLaundryGothicB";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+.total_footer{
+  font-family: TTLaundryGothicB;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+
+  margin: 0px auto;
+}
+.logo3 {
+  width: 100%;
+  height: 100px;
+}
+.line2 {
+  border-bottom: 3px solid #04a34b;
+  margin-top: 100px;
+}
+
+.pda{
+  margin-right: 10px;
+  font-size: 25px;
+  color: blue;
+}

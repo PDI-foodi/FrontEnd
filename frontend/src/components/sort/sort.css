@@ -54,7 +54,7 @@
   height: 25px !important;
 }
 
-.show {
+.show2 {
   margin: 0 auto;
   max-width: 1200px;
   display: flex;
@@ -66,7 +66,7 @@
 
 .sort-cards {
   width: 250px;
-  height: 330px;
+  height: 300px;
   box-sizing: border-box;
 }
 

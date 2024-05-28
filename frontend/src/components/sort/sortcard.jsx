@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import "../rank/css/Card.css";
+import "./sortcard.css";
 
 function Cards({ id, img, name, rate, rank, category }) {
   const navigate = useNavigate();
@@ -33,19 +33,19 @@ function Cards({ id, img, name, rate, rank, category }) {
 
   return (
     <Card className="responsive-card2">
-      <div className="card-img-container">
+      <div className="card-img-container2">
         <img
           src={img}
-          className="card-img"
+          className="card-img2"
           alt={name}
           onClick={handleCardClick}
         />
-        <div className="card-img-gradient" onClick={handleCardClick}></div>
+        <div className="card-img-gradient2" onClick={handleCardClick}></div>
       </div>
-      <Card.Body className="card-body" onClick={handleCardClick}>
-        <Card.Title className="card-title">{name}</Card.Title>
-        <Card.Text className="card-category">{category}</Card.Text>
-        <Card.Text className="card-rating">{renderStars(rate)}</Card.Text>
+      <Card.Body className="card-body2" onClick={handleCardClick}>
+        <Card.Title className="card-title2">{name}</Card.Title>
+        <Card.Text className="card-category2">{category}</Card.Text>
+        <Card.Text className="card-rating2">{renderStars(rate)}</Card.Text>
       </Card.Body>
     </Card>
   );

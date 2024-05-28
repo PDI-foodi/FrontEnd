@@ -193,7 +193,7 @@ export default function Sort() {
         </div>
         {/* <FaRegArrowAltCircleRight className="arrows"/> */}
       </div>
-      {show && <div className="show">{renderMoreItems()}</div>}
+      {show && <div className="show2">{renderMoreItems()}</div>}
     </div>
   );
 }

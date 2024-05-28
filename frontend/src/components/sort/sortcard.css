@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Freesentation-9Black";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TTLaundryGothicB";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Giants-Bold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+.responsive-card2:hover {
+  transform: scale(1.05);
+}
+
+.card-img-container2 {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+}
+
+.card-img2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-img-gradient2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.card-body2 {
+  font-family: Freesentation-9Black;
+  padding-top: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.card-title2 {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text2 {
+  color: #333;
+}
+
+.card-category2 {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.card-rating2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.card-rating2 svg {
+  margin: 0 2px;
+  font-size: 1.2em;
+}
+
+
+.responsive-card2 {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px 20px 20px 0px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+}
