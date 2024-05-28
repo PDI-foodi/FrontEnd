@@ -6,3 +6,18 @@
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
 }
+
+.right_food_list {
+  height: 370px;
+  padding: 10px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+}
+.right_choice_text_div {
+  padding: 10px 0px 0px 20px;
+}
+.right_choice_text {
+  font-size: 17px;
+  font-weight: bold;
+}
