@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .login > div {
@@ -49,4 +50,13 @@ button.btn-primary {
 
 button.btn-primary:hover {
   background-color: #007836; /* 호버 시 배경 색상 변경 */
+}
+
+p.btn-signup {
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: lighter;
+  color: #949494;
+  text-decoration: underline;
+  cursor: pointer;
 }

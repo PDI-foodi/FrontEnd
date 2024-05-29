@@ -18,7 +18,7 @@ function Login() {
         });
         if (response.status === 200) {
           console.log("로그인 성공!");
-          document.cookie = `authToken=${response.data.authToken}; path=/; max-age=3600;`;
+          document.cookie = `authToken=${response.data.authToken};`;
           navigator(`/main`);
         } else {
           alert("로그인에 실패했습니다.");
@@ -52,9 +52,10 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button type="button" class="btn btn-primary" onClick={loginHandling}>
+      <button type="button" className="btn btn-primary" onClick={loginHandling}>
         로그인
       </button>
+      <p className="btn-signup" onClick={()=>navigator(`/signup`)}>회원가입하기</p>
     </div>
   );
 }
