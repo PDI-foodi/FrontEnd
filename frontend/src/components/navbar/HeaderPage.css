@@ -8,12 +8,13 @@
 }
 .header Button{
   margin-top:10px;
-  margin-left:750px;
+  margin-left:700px;
 }
 .logo {
   width: 75px;
   height: 75px;
   cursor: pointer;
+  margin-left: 50px;
 }
 
 .user_info {
