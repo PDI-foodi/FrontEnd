@@ -141,7 +141,7 @@ export default function Sort() {
   return (
     <div>
       <div className="category">
-        <div className="all" onClick={all}>
+        <div className="allto" onClick={all}>
           <FaListUl className="all-icon" />
           전체
         </div>
