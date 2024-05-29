@@ -15,7 +15,7 @@ export default function Sort() {
     const fetchData = async () => {
       setShow(true);
       try {
-        const allItems = await axios.get("http://localhost:5000/sort");
+        const allItems = await axios.get("/sort");
         const temp = allItems.data;
         setCurrentIndex(itemsPerPage);
         setData(temp);
@@ -37,7 +37,7 @@ export default function Sort() {
   }, []);
 
   const all = async () => {
-    const allitems = await axios.get("http://localhost:5000/sort");
+    const allitems = await axios.get("/sort");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = allitems.data;
@@ -45,7 +45,7 @@ export default function Sort() {
   };
 
   const jjim = async () => {
-    const like = await axios.get("http://localhost:5000/like");
+    const like = await axios.get("/like");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = like.data;
@@ -53,7 +53,7 @@ export default function Sort() {
   };
 
   const western = async () => {
-    const western = await axios.get("http://localhost:5000/sort/western");
+    const western = await axios.get("/sort/western");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = western.data;
@@ -61,7 +61,7 @@ export default function Sort() {
   };
 
   const korea = async () => {
-    const korea = await axios.get("http://localhost:5000/sort/korea");
+    const korea = await axios.get("/sort/korea");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = korea.data;
@@ -69,7 +69,7 @@ export default function Sort() {
   };
 
   const japanese = async () => {
-    const japanese = await axios.get("http://localhost:5000/sort/japanese");
+    const japanese = await axios.get("/sort/japanese");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = japanese.data;
@@ -77,28 +77,28 @@ export default function Sort() {
   };
 
   const dessert = async () => {
-    const desert = await axios.get("http://localhost:5000/sort/desert");
+    const desert = await axios.get("/sort/desert");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = desert.data;
     setData(temp);
   };
   const fastfood = async () => {
-    const fastfood = await axios.get("http://localhost:5000/sort/fast-food");
+    const fastfood = await axios.get("/sort/fast-food");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = fastfood.data;
     setData(temp);
   };
   const flour = async () => {
-    const flour = await axios.get("http://localhost:5000/sort/flour");
+    const flour = await axios.get("/sort/flour");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = flour.data;
     setData(temp);
   };
   const etc = async () => {
-    const etc = await axios.get("http://localhost:5000/sort/etc");
+    const etc = await axios.get("/sort/etc");
     setCurrentIndex(itemsPerPage);
     setShow(true);
     const temp = etc.data;
@@ -141,7 +141,7 @@ export default function Sort() {
   return (
     <div>
       <div className="category">
-        <div className="all" onClick={all}>
+        <div className="allto" onClick={all}>
           <FaListUl className="all-icon" />
           전체
         </div>

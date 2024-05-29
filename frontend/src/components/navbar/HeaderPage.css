@@ -6,10 +6,15 @@
   max-width: 1200px;
   margin: 0px auto;
 }
+.header Button{
+  margin-top:2vh;
+  margin-left:105vh;
+}
 .logo {
   width: 75px;
   height: 75px;
 }
+
 .user_info {
   margin-right: 50px;
 }

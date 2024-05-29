@@ -1,5 +1,7 @@
 import "./HeaderPage.css";
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 
 const HeaderPage = () => {
   const navigate = useNavigate();
@@ -16,7 +18,9 @@ const HeaderPage = () => {
           className="logo"
           onClick={handleCardClick}
         />
+        <Button onClick={()=>navigate("/main/random")}>오늘 뭐 먹지?</Button>
         <span className="user_info">환영하니다 --님</span>
+        
       </div>
       <div className="line"></div>
     </>

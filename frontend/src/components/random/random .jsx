@@ -34,7 +34,7 @@ export default function Randomdice() {
         if(isRunning && data.length>0){
             intervalRef.current = setInterval(() => {
                 setCurrentIndex(prevIndex => (prevIndex + 1) % data.length);
-              }, 30); 
+              }, 50); 
         }
         return ()=> clearInterval(intervalRef.current);
     },[isRunning,data]);

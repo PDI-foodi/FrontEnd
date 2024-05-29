@@ -12,7 +12,7 @@ export default function Search() {
 
   const navigate = useNavigate();
 
-  const url = "http://localhost:5000/search/api/data"; //express.js 포트 변경 예정
+  const url = "/search/api/data"; //express.js 포트 변경 예정
   const headers = ""; //회원 로직 나중에 추가예정
 
   const searchBar = () => {
