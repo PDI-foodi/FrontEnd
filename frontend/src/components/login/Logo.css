@@ -12,10 +12,6 @@
   z-index: 2;
 }
 
-.logo-container .logo img {
-  margin-bottom: 10px;
-}
-
 @media (min-width: 768px) {
   .logo-container .logo img {
     width: 300px;
