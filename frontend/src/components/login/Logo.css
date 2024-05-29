@@ -34,14 +34,14 @@
 
 @media (min-width: 768px) {
   .logo-container .line {
-    position: fixed;
-    top: 280px;
+    position: absolute;
+    top: 285px;
   }
 }
 
 @media (max-width: 768px) {
   .logo-container .line {
-    position: fixed;
+    position: absolute;
     top: 230px;
   }
 }
