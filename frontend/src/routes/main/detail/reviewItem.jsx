@@ -4,6 +4,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import axios from "axios";
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
+import StarRatings from "react-star-ratings";
 
 const ReviewItem = (props) => {
   console.log(props.data);
@@ -47,6 +48,15 @@ const ReviewItem = (props) => {
           <div className="review_info">
             <span>{props.data.user?.nickname}</span>
             <span>{props.data?.content}</span>
+            <StarRatings
+              rating={props.data.rate}
+              starRatedColor="gold"
+              numberOfStars={5}
+              name="rating"
+              className="review_star_item"
+              starDimension="14px" // 별의 크기를 지정합니다.
+              starSpacing="2px" // 별 간의 간격을 지정합니다.
+            />
           </div>
           <span className="review_date">{displayDate}</span>
         </div>
