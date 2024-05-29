@@ -2,31 +2,37 @@ import PlaceIcon from "@mui/icons-material/Place";
 import "./right.foodItem.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const no_img_url = "https://donghyub.doit-partners.com/images/noimage.gif";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const RightFoodItem = (props) => {
   const [image, setImage] = useState([]);
-  const menu = props.data.name?.split(" ")[0];
-  console.log(menu);
 
-  /*  useEffect(() => {
+  const extractMenuName = (name) => {
+    if (name.includes("성수역점")) {
+      return name.split(" 성수역점")[0];
+    } else if (name.includes("성수점")) {
+      return name.split(" 성수점")[0];
+    } else if (name.includes("성수본점")) {
+      return name.split(" 성수본점")[0];
+    } else if (name.includes("성수")) {
+      return name.split(" 성수")[0];
+    }
+    return name;
+  };
+
+  const menu = extractMenuName(props.data?.name);
+
+  useEffect(() => {
     const fetchImage = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5001/image/naver?value=${menu}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        const images = res.data.length ? res.data : [no_img_url];
-        while (images.length < 3) {
-          images.push(no_img_url);
-        }
-        setImage(images);
+        const res = await axios.get(`/image/naver?value=${menu}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setImage(res.data[menu]);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -35,8 +41,7 @@ const RightFoodItem = (props) => {
     if (menu) {
       fetchImage();
     }
-  }, [menu]); // menu를 의존성 배열에 추가합니다. */
-  console.log(image);
+  }, [menu]);
 
   return (
     <div className="item_parent">
@@ -50,12 +55,17 @@ const RightFoodItem = (props) => {
           <span>216m</span>
         </div>
       </div>
-      <div>
-        {/* <img
-          src={image[1]}
+      <div className="detail_other_food_div">
+        <img
+          src={image?.[0] || "/img/no_img.jpeg"}
+          alt=""
+          className="detail_other_food_img"
+        />
+        <img
+          src={image?.[1] || "/img/no_img.jpeg"}
           alt="맛집 사진"
-          style={{ width: "100px", height: "100px" }}
-        /> */}
+          className="detail_other_food_img"
+        />
       </div>
     </div>
   );

@@ -6,14 +6,27 @@ import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const no_img_url = "https://donghyub.doit-partners.com/images/noimage.gif";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
-  console.log(props.data);
   const [image, setImage] = useState([]);
-  const menu = props.data.name?.split(" ")[0];
+
+  const extractMenuName = (name) => {
+    // '성수역점' 또는 '성수역'이 포함된 경우 앞부분만 추출
+    if (name?.includes("성수역점")) {
+      return name?.split(" 성수역점")[0];
+    } else if (name?.includes("성수점")) {
+      return name?.split(" 성수점")[0];
+    } else if (name?.includes("성수본점")) {
+      return name?.split(" 성수본점")[0];
+    } else if (name?.includes("성수")) {
+      return name?.split(" 성수")[0];
+    }
+    return name;
+  };
+
+  const menu = extractMenuName(props.data?.name);
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -23,11 +36,7 @@ const DetailPageLeft = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        const images = res.data.length ? res.data : [no_img_url];
-        while (res.data.length < 3) {
-          images.push(no_img_url);
-        }
-        setImage(images);
+        setImage(res.data[menu]);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -41,12 +50,21 @@ const DetailPageLeft = (props) => {
     <div className="detail_left_item">
       <section>
         <div className="detail_img">
-          {image.map((e, i) => {
-            return (
+          {image?.map((e, i) => {
+            return e.length > 0 ? (
               <div className="img_div">
                 <img
                   key={i}
                   src={e}
+                  alt="맛집 사진"
+                  className="detail_food_img"
+                />
+              </div>
+            ) : (
+              <div className="img_div">
+                <img
+                  key={i}
+                  src={"img/no_img.jpeg"}
                   alt="맛집 사진"
                   className="detail_food_img"
                 />
