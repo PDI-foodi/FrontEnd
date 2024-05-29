@@ -1,18 +1,39 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import "./detailPage.review.css";
 import { useState } from "react";
 import ReviewAddModal from "./reviewAdd.modal";
 import ReviewItem from "./reviewItem";
-import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 const detailReviewPage = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [show, setShow] = useState(false);
+  const [text, setText] = useState("");
+  const [rate, setRate] = useState(0);
+  const [userId, setUserId] = useState("");
+
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = async () => {
+    setShow(false);
+    try {
+      const res = await axios.post("/review", {
+        userId: userId,
+        restaurantId: props.rId,
+        content: text,
+        rate: rate,
+      });
+      alert("리뷰가 성공적으로 작성되었습니다!");
+      setText("");
+      const arr = [...props.comments, res.data];
+      props.setComments(arr);
+    } catch (error) {
+      console.error("Error submitting review:", error);
+    }
+  };
   const onClickAddReview = () => {
     setShow((prev) => !prev);
   };
-  const comments = props.data;
+
   return (
     <>
       {show && (
@@ -20,6 +41,11 @@ const detailReviewPage = (props) => {
           show={show}
           handleClose={handleClose}
           handleShow={handleShow}
+          text={text}
+          setText={setText}
+          rate={rate}
+          setRate={setRate}
+          setUserId={setUserId}
         />
       )}
       <section className="comment_div">
@@ -29,7 +55,7 @@ const detailReviewPage = (props) => {
             리뷰 작성하기
           </button>
         </div>
-        {comments?.map((e, i) => {
+        {props.comments?.map((e, i) => {
           return <ReviewItem data={e} />;
         })}
       </section>

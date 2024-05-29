@@ -11,23 +11,35 @@ const token =
 const DetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const test = async () => {
-      const res = await axios.get(`/detail/${params.detailId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setData(res.data);
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/detail/${params.detailId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setData(res.data);
+        setComments(res.data.comments);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
-    test();
-  }, []);
+
+    fetchData();
+  }, [params.detailId]); // params.detailId가 변경될 때마다 다시 데이터를 가져옵니다.
+
   return (
     <div className="parent">
       <HeaderPage />
       <main className="detail-main">
-        <DetailPageLeft data={data} />
+        <DetailPageLeft
+          data={data}
+          comments={comments}
+          setComments={setComments}
+        />
         <DetailPageRight data={data} />
       </main>
     </div>
