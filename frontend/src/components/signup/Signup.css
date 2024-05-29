@@ -13,9 +13,9 @@
     margin-bottom: 30px;
 }
 
-.signup-comment h1 {
+.signup-comment > h1 {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: bolder;
     margin-bottom: 20px;
 }
 
@@ -80,7 +80,7 @@
 
 .signup-pwd-check .password-message {
   font-size: 15px;
-  padding-left: 10px;
+  padding-right: 30px;
 }
 
 .signup-input .signup-nickname > div:nth-child(2) {
