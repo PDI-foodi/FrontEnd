@@ -35,3 +35,38 @@
 .heart_icon {
   color: gold;
 }
+.review_item_setting_icon {
+  position: relative;
+}
+/* reviewItem.css */
+
+.modalContainer {
+  position: relative;
+}
+
+.custom-modal .modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.custom-modal .modal-content {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-backdrop {
+  background-color: transparent;
+}
+.setting_div1 {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+.setting_div2 {
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.setting_div:hover {
+  cursor: pointer;
+}
