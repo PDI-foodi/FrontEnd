@@ -12,7 +12,6 @@ export default function Rank() {
       try {
         const response = await axios.get("/ranking");
         setRestaurants(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
