@@ -5,10 +5,12 @@ import axios from "axios";
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
+import ReviewUpdateModal from "./reviewUpdate.modal";
 
 const ReviewItem = (props) => {
   console.log(props.data);
   const [showModal, setShowModal] = useState(false);
+  const [show, setShow] = useState(false);
   const [curRId, setCurRId] = useState("");
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const spanRef = useRef(null);
@@ -20,7 +22,6 @@ const ReviewItem = (props) => {
   const displayDate = daysDifference === 0 ? "오늘" : `${daysDifference}일전`;
 
   const handleModalClose = () => setShowModal(false);
-
   const handleModalShow = (event) => {
     const rect = spanRef.current.getBoundingClientRect();
     setModalPosition({
@@ -33,7 +34,11 @@ const ReviewItem = (props) => {
     setCurRId(parentId);
   };
 
-  const onClickUpdate = () => {};
+  const onClickUpdate = async () => {
+    setShow((prev) => !prev);
+  };
+  const handleClose = () => setShow(false);
+
   const onClickDelete = async () => {
     await axios.delete(`/review/${curRId}`);
     props.triggerRefresh();
@@ -92,6 +97,17 @@ const ReviewItem = (props) => {
             </div>
           </Modal.Body>
         </Modal>
+      )}
+      {show && (
+        <ReviewUpdateModal
+          data={props.data}
+          show={show}
+          setShow={setShow}
+          setShowModal={setShowModal}
+          handleClose={handleClose}
+          curRId={curRId}
+          triggerRefresh={props.triggerRefresh}
+        />
       )}
     </>
   );
