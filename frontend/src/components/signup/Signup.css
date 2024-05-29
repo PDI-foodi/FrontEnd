@@ -13,9 +13,9 @@
     margin-bottom: 30px;
 }
 
-.signup-comment h1 {
+.signup-comment > h1 {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: bolder;
     margin-bottom: 20px;
 }
 
@@ -70,17 +70,9 @@
     color: #EE5757;
 }
 
-
-.signup-input .signup-pwd-check > div:nth-child(2){
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-}
-
 .signup-pwd-check .password-message {
   font-size: 15px;
-  padding-left: 10px;
+  padding-right: 30px;
 }
 
 .signup-input .signup-nickname > div:nth-child(2) {

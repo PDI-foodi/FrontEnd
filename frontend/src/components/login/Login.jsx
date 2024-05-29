@@ -35,22 +35,27 @@ function Login() {
   return (
     <div className="login">
       <div>
-        <p>아이디</p>
+        <label for="id">아이디</label>
         <input
           type="text"
           placeholder="pdazzang"
+          name="id"
           value={id}
           onChange={(e) => setId(e.target.value)}
         />
       </div>
       <div>
-        <p>비밀번호</p>
+        <label for="password">비밀번호</label>
         <input
           type="password"
           placeholder="********"
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+      </div>
+      <div className="find-pwd">
+        <p onClick={()=>navigator(`/find-pwd`)}>비밀번호찾기</p>
       </div>
       <button type="button" className="btn btn-primary" onClick={loginHandling}>
         로그인

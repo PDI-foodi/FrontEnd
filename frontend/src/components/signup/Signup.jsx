@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
@@ -6,11 +6,13 @@ import "./Signup.css";
 function Signup() {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [nickname, setNickname] = useState("");
-    const [nicknameCount, setNicknameCount] = useState(0);
     const [passwordCheck, setPasswordCheck] = useState("");
+    const [nickname, setNickname] = useState("");
+
+    const [nicknameCount, setNicknameCount] = useState(0);
     const [passwordMessage, setPasswordMessage] = useState("");
     const [messageClass, setMessageClass] = useState("password-mismatch");
+    const [signupAvailable, setSignupAvailable] = useState(false);
 
     const navigator = useNavigate();
 
@@ -49,6 +51,7 @@ function Signup() {
     const checkPassword = () => {
         if (password === "" || passwordCheck === "") {
             setPasswordMessage("");
+            setMessageClass("");
         } else if (password === passwordCheck) {
             setPasswordMessage("비밀번호가 일치합니다!");
             setMessageClass("password-match");
@@ -66,6 +69,18 @@ function Signup() {
         }
     };
 
+    useEffect(() => {
+        const checkSignupConditions = () => {
+            if (id !== "" && password !== "" && passwordCheck !== "" && nickname !== "" && messageClass === "password-match") {
+                setSignupAvailable(true);
+            } else {
+                setSignupAvailable(false);
+            }
+        };
+
+        checkSignupConditions();
+    }, [id, password, passwordCheck, nickname, messageClass]);
+
     return (
         <div className="signup-body">
             <div className="signup-comment">
@@ -81,7 +96,9 @@ function Signup() {
                         placeholder="pdazzang"
                         name="id"
                         value={id}
-                        onChange={(e) => setId(e.target.value)}
+                        onChange={(e) => {
+                            setId(e.target.value)
+                        }}
                     />
                 </div>
                 <div className="signup-pwd">
@@ -91,8 +108,10 @@ function Signup() {
                         placeholder="********"
                         name="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        onBlur={checkPassword}
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                        onBlur={()=>checkPassword()}
                     />
                 </div>
                 <div className="signup-pwd-check">
@@ -103,8 +122,10 @@ function Signup() {
                         placeholder="********"
                         name="passwordCheck"
                         value={passwordCheck}
-                        onChange={(e) => setPasswordCheck(e.target.value)}
-                        onBlur={checkPassword}
+                        onChange={(e) => {
+                            setPasswordCheck(e.target.value)
+                        }}
+                        onBlur={()=>checkPassword()}
                     />
                     </div>
                     <div className={`password-message ${messageClass}`}>{passwordMessage}</div>
@@ -118,14 +139,16 @@ function Signup() {
                         placeholder="프디아짱"
                         name="nickname"
                         value={nickname}
-                        onChange={(e) => {handleNicknameChange(e)}}
+                        onChange={(e) => {
+                            handleNicknameChange(e)
+                        }}
                         />
                     </div>
                     <div className="nickname-count">{nicknameCount}/10</div>
                 </div>
                 
             </div>
-            <button type="button" className="btn btn-primary" onClick={signupHandling} disabled={messageClass !== "password-match"}>
+            <button type="button" className="btn btn-primary" onClick={signupHandling} disabled={signupAvailable === false}>
                     회원가입하기
             </button>
         </div>
