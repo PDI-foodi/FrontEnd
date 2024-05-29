@@ -54,6 +54,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      <div className="find-pwd">
+        <p onClick={()=>navigator(`/find-pwd`)}>비밀번호찾기</p>
+      </div>
       <button type="button" className="btn btn-primary" onClick={loginHandling}>
         로그인
       </button>
