@@ -1,8 +1,7 @@
-import {React,useState,useEffect,useRef} from 'react'
-import axios from 'axios'
-import HeaderPage from '../navbar/HeaderPage'
-import './random.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {React,useState,useEffect,useRef} from 'react';
+import axios from 'axios';
+import HeaderPage from '../navbar/HeaderPage';
+import './random.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -16,7 +15,7 @@ export default function Randomdice() {
 
     useEffect(()=>{
         const alldata=async()=>{
-            const all=await axios.get("http://localhost:5000/sort")
+            const all=await axios.get("/sort")
             const response=all.data;
             const randomdata=[]
             response.map((elem,index)=>{
