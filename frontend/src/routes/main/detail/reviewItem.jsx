@@ -1,6 +1,6 @@
 import "./reviewItem.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const ReviewItem = (props) => {
   const start = new Date(props.data.createdAt);
@@ -15,12 +15,12 @@ const ReviewItem = (props) => {
       <div className="review_info_div">
         <AccountCircleIcon className="user_icon" />
         <div className="review_info">
-          <span>{props.data.user.nickname}</span>
-          <span>{props.data.content}</span>
+          <span>{props.data.user?.nickname}</span>
+          <span>{props.data?.content}</span>
         </div>
         <span className="review_date">{displayDate}</span>
       </div>
-      <FavoriteIcon className="heart_icon" />
+      <MoreVertIcon />
     </div>
   );
 };
