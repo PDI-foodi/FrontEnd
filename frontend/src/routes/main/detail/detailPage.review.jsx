@@ -4,7 +4,7 @@ import ReviewAddModal from "./reviewAdd.modal";
 import ReviewItem from "./reviewItem";
 import Button from "react-bootstrap/Button";
 
-const detailReviewPage = () => {
+const detailReviewPage = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -12,6 +12,7 @@ const detailReviewPage = () => {
   const onClickAddReview = () => {
     setShow((prev) => !prev);
   };
+  const comments = props.data;
   return (
     <>
       {show && (
@@ -28,13 +29,9 @@ const detailReviewPage = () => {
             리뷰 작성하기
           </button>
         </div>
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
+        {comments?.map((e, i) => {
+          return <ReviewItem data={e} />;
+        })}
       </section>
     </>
   );

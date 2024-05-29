@@ -116,7 +116,7 @@ const DetailPageLeft = (props) => {
         </div>
         <div className="contour_line"></div>
       </section>
-      <DetailReviewPage />
+      <DetailReviewPage data={props.data.comments} />
     </div>
   );
 };
