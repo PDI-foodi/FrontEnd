@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import "./detailPage.review.css";
 import { useState } from "react";
 import ReviewAddModal from "./reviewAdd.modal";
 import ReviewItem from "./reviewItem";
 import axios from "axios";
 
-const detailReviewPage = (props) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const DetailReviewPage = (props) => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   const [rate, setRate] = useState(0);
@@ -24,12 +22,12 @@ const detailReviewPage = (props) => {
       });
       alert("리뷰가 성공적으로 작성되었습니다!");
       setText("");
-      const arr = [...props.comments, res.data];
-      props.setComments(arr);
+      props.triggerRefresh();
     } catch (error) {
       console.error("Error submitting review:", error);
     }
   };
+
   const onClickAddReview = () => {
     setShow((prev) => !prev);
   };
@@ -55,13 +53,14 @@ const detailReviewPage = (props) => {
             리뷰 작성하기
           </button>
         </div>
-        {props.comments?.map((e, i) => {
+        {props.data.comments?.map((e, i) => {
           return (
             <ReviewItem
               data={e}
               id={e._id}
               setComments={props.setComments}
               comments={props.comments}
+              triggerRefresh={props.triggerRefresh}
             />
           );
         })}
@@ -69,4 +68,4 @@ const detailReviewPage = (props) => {
     </>
   );
 };
-export default detailReviewPage;
+export default DetailReviewPage;

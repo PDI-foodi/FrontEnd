@@ -6,6 +6,7 @@ import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 
 const ReviewItem = (props) => {
+  console.log(props.data);
   const [showModal, setShowModal] = useState(false);
   const [curRId, setCurRId] = useState("");
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -33,9 +34,8 @@ const ReviewItem = (props) => {
 
   const onClickUpdate = () => {};
   const onClickDelete = async () => {
-    const res = await axios.delete(`/review/${curRId}`);
-    const newList = props.comments.filter((e) => e.id !== curRId);
-    props.setComments(newList);
+    await axios.delete(`/review/${curRId}`);
+    props.triggerRefresh();
     alert("삭제되었습니다");
   };
 

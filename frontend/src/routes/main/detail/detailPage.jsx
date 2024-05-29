@@ -5,13 +5,14 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import DetailPageLeft from "./detailPage.left";
 import DetailPageRight from "./detailPage.right";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
+
+const token = "YOUR_JWT_TOKEN_HERE";
 
 const DetailPage = () => {
   const params = useParams();
   const [data, setData] = useState({});
   const [comments, setComments] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +30,10 @@ const DetailPage = () => {
     };
 
     fetchData();
-  }, [params.detailId]); // params.detailId가 변경될 때마다 다시 데이터를 가져옵니다.
+  }, [params.detailId, refresh]);
+  const triggerRefresh = () => {
+    setRefresh((prev) => !prev);
+  };
 
   return (
     <div className="parent">
@@ -37,12 +41,13 @@ const DetailPage = () => {
       <main className="detail-main">
         <DetailPageLeft
           data={data}
-          comments={comments}
           setComments={setComments}
+          triggerRefresh={triggerRefresh} // Pass triggerRefresh to child
         />
         <DetailPageRight data={data} />
       </main>
     </div>
   );
 };
+
 export default DetailPage;
