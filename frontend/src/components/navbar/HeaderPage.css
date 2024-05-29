@@ -1,14 +1,17 @@
+@import url("https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css");
+
 .header {
+  font-family: nanumsquare;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   max-width: 1200px;
-  margin: 0px auto;
+  margin: 0px auto 0px auto;
 }
-.header Button{
-  margin-top:10px;
-  margin-left:700px;
+.header Button {
+  margin-top: 10px;
+  margin-left: 700px;
 }
 .logo {
   width: 75px;
@@ -18,6 +21,7 @@
 }
 
 .user_info {
+  margin-top: 20px;
   margin-right: 50px;
 }
 .line {
