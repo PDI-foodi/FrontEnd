@@ -56,7 +56,14 @@ const detailReviewPage = (props) => {
           </button>
         </div>
         {props.comments?.map((e, i) => {
-          return <ReviewItem data={e} />;
+          return (
+            <ReviewItem
+              data={e}
+              id={e._id}
+              setComments={props.setComments}
+              comments={props.comments}
+            />
+          );
         })}
       </section>
     </>

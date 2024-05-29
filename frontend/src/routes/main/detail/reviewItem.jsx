@@ -1,13 +1,21 @@
 import "./reviewItem.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import axios from "axios";
 import { useState, useRef } from "react";
 import { Modal } from "react-bootstrap";
 
 const ReviewItem = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [curRId, setCurRId] = useState("");
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const spanRef = useRef(null);
+
+  const start = new Date(props.data.createdAt);
+  const now = new Date();
+  const timeDifference = now - start;
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const displayDate = daysDifference === 0 ? "오늘" : `${daysDifference}일전`;
 
   const handleModalClose = () => setShowModal(false);
 
@@ -18,17 +26,22 @@ const ReviewItem = (props) => {
       left: rect.left + window.scrollX,
     });
     setShowModal((prev) => !prev);
+    const parentId = event.currentTarget.closest(".review_item").id;
+    console.log(parentId);
+    setCurRId(parentId);
   };
 
-  const start = new Date(props.data.createdAt);
-  const now = new Date();
-  const timeDifference = now - start;
-  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  const displayDate = daysDifference === 0 ? "오늘" : `${daysDifference}일전`;
+  const onClickUpdate = () => {};
+  const onClickDelete = async () => {
+    const res = await axios.delete(`/review/${curRId}`);
+    const newList = props.comments.filter((e) => e.id !== curRId);
+    props.setComments(newList);
+    alert("삭제되었습니다");
+  };
 
   return (
     <>
-      <div className="review_item">
+      <div className="review_item" id={props.id}>
         <div className="review_info_div">
           <AccountCircleIcon className="user_icon" />
           <div className="review_info">
@@ -42,7 +55,7 @@ const ReviewItem = (props) => {
           onClick={handleModalShow}
           ref={spanRef}
         >
-          <MoreVertIcon />
+          <MoreVertIcon style={{ cursor: "pointer" }} />
         </span>
       </div>
       {showModal && (
@@ -60,9 +73,13 @@ const ReviewItem = (props) => {
           backdropClassName="custom-backdrop"
         >
           <Modal.Body style={{ padding: "0px" }}>
-            <div className="setting_div setting_div1">수정</div>
+            <div className="setting_div setting_div1" onClick={onClickUpdate}>
+              수정
+            </div>
             <br />
-            <div className="setting_div setting_div2">삭제</div>
+            <div className="setting_div setting_div2" onClick={onClickDelete}>
+              삭제
+            </div>
           </Modal.Body>
         </Modal>
       )}
