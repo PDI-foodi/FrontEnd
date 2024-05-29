@@ -15,7 +15,7 @@ export default function Randomdice() {
 
     useEffect(()=>{
         const alldata=async()=>{
-            const all=await axios.get("http://localhost:5000/sort")
+            const all=await axios.get("/sort")
             const response=all.data;
             const randomdata=[]
             response.map((elem,index)=>{
