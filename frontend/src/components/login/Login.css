@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding-top: 30px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .login > div {
@@ -11,10 +12,13 @@
   align-items: center;
   width: 100%;
   max-width: 360px;
+}
+
+.login div:first-child {
   margin-bottom: 25px;
 }
 
-.login p {
+.login label {
   margin: 0;
   width: 70px;
   text-align: right;
@@ -33,9 +37,29 @@
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.find-pwd {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  color: #949494;
+  text-decoration: underline;
+  font-size: 11px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.find-pwd p {
+  transition: color 0.2s ease;
+}
+
+.find-pwd p:hover {
+  color: black;
+}
+
 button.btn-primary {
   width: 130px;
   padding: 7px 0;
+  margin-top: 0px;
   font-size: 1rem;
   font-weight: bold;
   color: white;
@@ -49,4 +73,18 @@ button.btn-primary {
 
 button.btn-primary:hover {
   background-color: #007836; /* 호버 시 배경 색상 변경 */
+}
+
+p.btn-signup {
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: lighter;
+  color: #949494;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+p.btn-signup:hover {
+  color: black;
 }

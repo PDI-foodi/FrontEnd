@@ -18,7 +18,7 @@ function Login() {
         });
         if (response.status === 200) {
           console.log("로그인 성공!");
-          document.cookie = `authToken=${response.data.authToken}; path=/; max-age=3600;`;
+          document.cookie = `authToken=${response.data.authToken};`;
           navigator(`/main`);
         } else {
           alert("로그인에 실패했습니다.");
@@ -35,26 +35,32 @@ function Login() {
   return (
     <div className="login">
       <div>
-        <p>아이디</p>
+        <label for="id">아이디</label>
         <input
           type="text"
           placeholder="pdazzang"
+          name="id"
           value={id}
           onChange={(e) => setId(e.target.value)}
         />
       </div>
       <div>
-        <p>비밀번호</p>
+        <label for="password">비밀번호</label>
         <input
           type="password"
           placeholder="********"
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <button type="button" class="btn btn-primary" onClick={loginHandling}>
+      <div className="find-pwd">
+        <p onClick={()=>navigator(`/find-pwd`)}>비밀번호찾기</p>
+      </div>
+      <button type="button" className="btn btn-primary" onClick={loginHandling}>
         로그인
       </button>
+      <p className="btn-signup" onClick={()=>navigator(`/signup`)}>회원가입하기</p>
     </div>
   );
 }

@@ -12,15 +12,36 @@
   z-index: 2;
 }
 
-.logo-container .logo img {
-  width: 200px;
+@media (min-width: 768px) {
+  .logo-container .logo img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-container .logo img {
+    width: 200px;
+  }
 }
 
 .logo-container .line {
   width: 100%;
   height: 18px;
   background-color: #01a34b;
-  position: fixed;
-  top: 230px;
   z-index: 1;
+}
+
+
+@media (min-width: 768px) {
+  .logo-container .line {
+    position: absolute;
+    top: 285px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-container .line {
+    position: absolute;
+    top: 230px;
+  }
 }
