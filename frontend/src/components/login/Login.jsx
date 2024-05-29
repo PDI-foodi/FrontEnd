@@ -32,6 +32,12 @@ function Login() {
     LoginData();
   };
 
+  const loginEnter = (e) => {
+    if (e.key === "Enter") {
+      loginHandling();
+    }
+  }
+
   return (
     <div className="login">
       <div>
@@ -42,6 +48,7 @@ function Login() {
           name="id"
           value={id}
           onChange={(e) => setId(e.target.value)}
+          onKeyDown={loginEnter}
         />
       </div>
       <div>
@@ -52,6 +59,7 @@ function Login() {
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={loginEnter}
         />
       </div>
       <div className="find-pwd">
