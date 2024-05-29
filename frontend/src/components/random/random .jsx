@@ -1,8 +1,7 @@
-import {React,useState,useEffect,useRef} from 'react'
-import axios from 'axios'
-import HeaderPage from '../navbar/HeaderPage'
-import './random.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {React,useState,useEffect,useRef} from 'react';
+import axios from 'axios';
+import HeaderPage from '../navbar/HeaderPage';
+import './random.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
