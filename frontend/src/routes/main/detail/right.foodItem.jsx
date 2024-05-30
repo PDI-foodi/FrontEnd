@@ -1,6 +1,7 @@
 import PlaceIcon from "@mui/icons-material/Place";
 import "./right.foodItem.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const token =
@@ -8,6 +9,7 @@ const token =
 
 const RightFoodItem = (props) => {
   const [image, setImage] = useState([]);
+  const navigate = useNavigate();
 
   const extractMenuName = (name) => {
     if (name.includes("성수역점")) {
@@ -43,8 +45,16 @@ const RightFoodItem = (props) => {
     }
   }, [menu]);
 
+  const onCLickMove = () => {
+    navigate(`/main/${props.data.id}`);
+  };
+
   return (
-    <div className="item_parent">
+    <div
+      className="item_parent"
+      onClick={onCLickMove}
+      style={{ cursor: "pointer" }}
+    >
       <div className="item_div">
         <div className="item_div_text">
           <span>{props.data.name}</span>
@@ -57,12 +67,12 @@ const RightFoodItem = (props) => {
       </div>
       <div className="detail_other_food_div">
         <img
-          src={image?.[0] || "/img/no_img.jpeg"}
+          src={image?.[0] || "/img/no_img4.gif"}
           alt=""
           className="detail_other_food_img"
         />
         <img
-          src={image?.[1] || "/img/no_img.jpeg"}
+          src={image?.[1] || "/img/no_img4.gif"}
           alt="맛집 사진"
           className="detail_other_food_img"
         />
