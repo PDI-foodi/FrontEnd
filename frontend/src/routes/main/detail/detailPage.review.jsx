@@ -2,16 +2,36 @@ import "./detailPage.review.css";
 import { useState } from "react";
 import ReviewAddModal from "./reviewAdd.modal";
 import ReviewItem from "./reviewItem";
-import Button from "react-bootstrap/Button";
+import axios from "axios";
 
-const detailReviewPage = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const DetailReviewPage = (props) => {
   const [show, setShow] = useState(false);
+  const [text, setText] = useState("");
+  const [rate, setRate] = useState(0);
+  const [userId, setUserId] = useState("");
+
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = async () => {
+    setShow(false);
+    try {
+      const res = await axios.post("/review", {
+        userId: userId,
+        restaurantId: props.rId,
+        content: text,
+        rate: rate,
+      });
+      alert("리뷰가 성공적으로 작성되었습니다!");
+      setText("");
+      props.triggerRefresh();
+    } catch (error) {
+      console.error("Error submitting review:", error);
+    }
+  };
+
   const onClickAddReview = () => {
     setShow((prev) => !prev);
   };
+
   return (
     <>
       {show && (
@@ -19,6 +39,11 @@ const detailReviewPage = () => {
           show={show}
           handleClose={handleClose}
           handleShow={handleShow}
+          text={text}
+          setText={setText}
+          rate={rate}
+          setRate={setRate}
+          setUserId={setUserId}
         />
       )}
       <section className="comment_div">
@@ -28,15 +53,19 @@ const detailReviewPage = () => {
             리뷰 작성하기
           </button>
         </div>
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
-        <ReviewItem />
+        {props.data.comments?.map((e, i) => {
+          return (
+            <ReviewItem
+              data={e}
+              id={e._id}
+              setComments={props.setComments}
+              comments={props.comments}
+              triggerRefresh={props.triggerRefresh}
+            />
+          );
+        })}
       </section>
     </>
   );
 };
-export default detailReviewPage;
+export default DetailReviewPage;
