@@ -2,7 +2,6 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
-
 }
 
 .slick-slide {
@@ -26,4 +25,7 @@
 
 .slick-center img {
   filter: brightness(1);
+}
+.slick-slider .slick-arrow.slick-next {
+  display: none !important;
 }
