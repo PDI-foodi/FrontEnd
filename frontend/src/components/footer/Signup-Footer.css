@@ -6,8 +6,10 @@
   font-style: normal;
 }
 
-.total_footer {
-  font-family: TTLaundryGothicB;
+.signup-total_footer {
+  font-family: "Prentendard", sans-serif;
+  font-weight: bold;
+  text-align: end;
 }
 
 .footer {
@@ -22,11 +24,16 @@
 }
 .line2 {
   border-bottom: 3px solid #04a34b;
-  margin-top: 100px;
 }
 
 .pda {
   margin-right: 10px;
   font-size: 25px;
   color: blue;
+}
+
+@media (max-width: 768px) {
+  .signup-author {
+    font-size: 13px;
+  }
 }
