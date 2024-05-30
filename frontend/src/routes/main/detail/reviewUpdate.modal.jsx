@@ -27,17 +27,23 @@ const ReviewUpdateModal = (props) => {
     fetchUserId();
   });
 
-  const onClickUpdateReview = async () => {
-    await axios.put(`/review/${props.curRId}`, {
-      userId: userId,
-      restaurantId: params.detailId,
-      content: contents,
-      rate: rate,
-    });
-    props.setShow(false);
-    props.setShowModal(false);
-    alert("리뷰가 수정되었습니다,");
-    props.triggerRefresh();
+  const onClickUpdate = async () => {
+    try {
+      const res = await axios.put(`/review/${props.curRId}`, {
+        userId: userId,
+        restaurantId: params.detailId,
+        content: contents,
+        rate: rate,
+      });
+      props.setShow(true);
+      props.setShowModal(false);
+      alert("리뷰가 수정되었습니다,");
+      props.triggerRefresh();
+    } catch (error) {
+      alert("수정할 권한이 없습니다");
+      props.setShow(false);
+      props.setShowModal(false);
+    }
   };
 
   return (
@@ -76,7 +82,7 @@ const ReviewUpdateModal = (props) => {
           <button onClick={props.handleClose} className="f_btn cancel_btn">
             <span>이전</span>
           </button>
-          <button onClick={onClickUpdateReview} className="f_btn add_btn">
+          <button onClick={onClickUpdate} className="f_btn add_btn">
             등록
           </button>
         </div>

@@ -2,16 +2,18 @@ import "./reviewItem.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import axios from "axios";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import StarRatings from "react-star-ratings";
 import ReviewUpdateModal from "./reviewUpdate.modal";
+import { useParams } from "react-router-dom";
 
 const ReviewItem = (props) => {
   console.log(props.data);
   const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(false);
   const [curRId, setCurRId] = useState("");
+  const [userId, setUserId] = useState("");
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const spanRef = useRef(null);
 
@@ -20,6 +22,16 @@ const ReviewItem = (props) => {
   const timeDifference = now - start;
   const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const displayDate = daysDifference === 0 ? "오늘" : `${daysDifference}일전`;
+
+  useEffect(() => {
+    const fetchUserId = async () => {
+      const res = await axios.get("/nickname/id");
+      setUserId(res.data);
+    };
+    fetchUserId();
+  }, []);
+
+  //const onClickUpdateReview = () => {};
 
   const handleModalClose = () => setShowModal(false);
   const handleModalShow = (event) => {
@@ -40,9 +52,18 @@ const ReviewItem = (props) => {
   const handleClose = () => setShow(false);
 
   const onClickDelete = async () => {
-    await axios.delete(`/review/${curRId}`);
-    props.triggerRefresh();
-    alert("삭제되었습니다");
+    try {
+      const res = await axios.delete(`/review/${curRId}`, {
+        data: {
+          userId: userId,
+        },
+      });
+      props.triggerRefresh();
+      alert("삭제되었습니다");
+    } catch (error) {
+      alert("삭제 권한이 없습니다");
+      setShowModal((prev) => !prev);
+    }
   };
 
   return (
@@ -107,6 +128,8 @@ const ReviewItem = (props) => {
           handleClose={handleClose}
           curRId={curRId}
           triggerRefresh={props.triggerRefresh}
+          onClickUpdate={onClickUpdate}
+          userId={userId}
         />
       )}
     </>

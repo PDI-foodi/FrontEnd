@@ -83,3 +83,26 @@
   margin-right: 10px;
   cursor: pointer;
 }
+.naver_map_icon {
+  font-size: 30px !important;
+  color: #00a44b;
+}
+.moblie_map_icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+}
+.moblie_map_icon_text {
+  font-size: 12px;
+  font-weight: bold;
+  color: #00a44b;
+}
+
+@media screen and (max-width: 1240px) {
+  .moblie_map_icon {
+    display: flex;
+  }
+}

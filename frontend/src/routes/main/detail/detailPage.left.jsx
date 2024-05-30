@@ -4,14 +4,20 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
+import NaverMapModal from "./naverMap.modal";
 import { useEffect, useState } from "react";
+import { TbMap2 } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
   const [image, setImage] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
   const [jjim, setjjim] = useState(false);
   const params = useParams();
   const extractMenuName = (name) => {
@@ -30,6 +36,10 @@ const DetailPageLeft = (props) => {
 
   const menu = extractMenuName(props.data?.name);
 
+  const onClickMapIcon = () => {
+    setShow((prev) => !prev);
+  };
+
   useEffect(() => {
     const fetchImage = async () => {
       try {
@@ -38,7 +48,17 @@ const DetailPageLeft = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setImage(res.data[menu]);
+        let fetchedImages = res.data[menu];
+
+        // Check if the number of images is less than 3
+        if (fetchedImages.length < 3) {
+          // Add "No Image" placeholder images until the array has at least 3 images
+          const noImage = "/img/no_img4.gif";
+          while (fetchedImages.length < 3) {
+            fetchedImages.push(noImage);
+          }
+        }
+        setImage(fetchedImages);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -149,8 +169,21 @@ const DetailPageLeft = (props) => {
         <div className="food_location_div">
           <div className="food_location_item">
             <FmdGoodIcon className="map_icon" />
-            <div className="food_location_text">
-              <span>{props.data.location}</span>
+            <div className="food_location_text" style={{ width: "100%" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <span>{props.data.location}</span>
+                <div className="moblie_map_icon" onClick={onClickMapIcon}>
+                  <TbMap2 className="naver_map_icon" />
+                  <span className="moblie_map_icon_text">위치보기</span>
+                </div>
+              </div>
               <span>
                 현재 위치로부터{" "}
                 <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
@@ -169,6 +202,13 @@ const DetailPageLeft = (props) => {
         rId={props.data.id}
         triggerRefresh={props.triggerRefresh}
       />
+      {show && (
+        <NaverMapModal
+          show={show}
+          data={props.data}
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 };
