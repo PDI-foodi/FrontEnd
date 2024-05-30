@@ -4,7 +4,7 @@ import "./Logo.css";
 function Logo() {
   return (
     <div className="logo-container">
-      <div className="logo">
+      <div className="login-logo">
         <img src="/img/pdifoodi-logo.png" alt="logo" />
       </div>
       <div className="line"></div>

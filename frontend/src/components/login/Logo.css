@@ -5,7 +5,7 @@
   margin-top: 150px;
 }
 
-.logo-container .logo {
+.logo-container .login-logo {
   width: 100%;
   height: auto;
   position: relative;
@@ -13,13 +13,13 @@
 }
 
 @media (min-width: 768px) {
-  .logo-container .logo img {
+  .logo-container .login-logo img {
     width: 300px;
   }
 }
 
 @media (max-width: 768px) {
-  .logo-container .logo img {
+  .logo-container .login-logo img {
     width: 200px;
   }
 }
@@ -30,7 +30,6 @@
   background-color: #01a34b;
   z-index: 1;
 }
-
 
 @media (min-width: 768px) {
   .logo-container .line {
