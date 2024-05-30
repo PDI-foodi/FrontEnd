@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 30px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
 }
 
 .login > div {
@@ -26,15 +26,33 @@
   font-weight: bolder;
 }
 
-.login input {
-  flex-grow: 1;
-  height: 40px;
-  padding: 8px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  background-color: #d7ecd7;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+  .login > div {
+    width: 80%;
+  }
+  .login input {
+    flex-grow: 1;
+    height: 40px;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d7ecd7;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (min-width: 768px) {
+  .login input {
+    flex-grow: 1;
+    height: 40px;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d7ecd7;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .find-pwd {
