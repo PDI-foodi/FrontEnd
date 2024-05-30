@@ -106,6 +106,7 @@ const DetailPageLeft = (props) => {
     setjjim((prev) => !prev);
   };
   console.log(props.data);
+  const comments = props.data.comments || [];
   return (
     <div className="detail_left_item">
       <section>
@@ -162,9 +163,7 @@ const DetailPageLeft = (props) => {
               starSpacing="2px" // 별 간의 간격을 지정합니다.
             />
             <span className="star_score">{props.data.rate}점</span>
-            <span className="review_count">
-              {props.data.comments.length}명의 평가
-            </span>
+            <span className="review_count">{comments.length}명의 평가</span>
           </div>
         </div>
         <div className="contour_line"></div>
