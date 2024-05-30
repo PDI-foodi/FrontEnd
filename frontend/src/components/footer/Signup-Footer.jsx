@@ -9,7 +9,7 @@ const HeaderPage = () => {
   };
   return (
     <div className="signup-total_footer">
-      <div className="line2"></div>
+      <div className="signup-line2"></div>
       <div className="footer">
         <span>
           {/* <span className="pda">PDA 4th</span> */}
