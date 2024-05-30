@@ -99,6 +99,10 @@
   }
 }
 
+.find-pwd-body button {
+  margin-top: 10px;
+}
+
 /* find-pwd-modal */
 
 .find-pwd-modal-background {
