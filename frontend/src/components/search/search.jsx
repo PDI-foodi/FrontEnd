@@ -12,13 +12,17 @@ export default function Search() {
 
   const navigate = useNavigate();
 
+  console.log(document.cookie);
+
   const url = "/search/api/data"; //express.js 포트 변경 예정
   const headers = ""; //회원 로직 나중에 추가예정
 
+
+  
+
   const searchBar = () => {
     setShow(true);
-    console.log(url);
-    axios.get(url + `?value=${text}`).then((response) => {
+    axios.get(url + `?value=${text}`, { withCredentials: true }).then((response) => {
       setResult(response.data.result[0]);
     });
   };

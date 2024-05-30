@@ -1,5 +1,6 @@
 import { React, useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./sort.css";
 import { FaListUl,FaRegArrowAltCircleRight } from "react-icons/fa";
 import Card from "./sortcard.jsx";
@@ -8,6 +9,7 @@ export default function Sort() {
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate=useNavigate();
   const itemsPerPage = 4;
   const observer = useRef();
 
@@ -20,7 +22,8 @@ export default function Sort() {
         setCurrentIndex(itemsPerPage);
         setData(temp);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        alert("로그인하세요!");
+        navigate("/");
       }
     };
     fetchData();
@@ -37,11 +40,14 @@ export default function Sort() {
   }, []);
 
   const all = async () => {
-    const allitems = await axios.get("/sort");
-    setCurrentIndex(itemsPerPage);
-    setShow(true);
-    const temp = allitems.data;
-    setData(temp);
+
+      const allitems = await axios.get("/sort");
+      setCurrentIndex(itemsPerPage);
+      setShow(true);
+      const temp = allitems.data;
+      setData(temp);
+    
+    
   };
 
   const jjim = async () => {
