@@ -5,13 +5,15 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
   const [image, setImage] = useState([]);
-
+  const [jjim, setjjim] = useState(false);
+  const params = useParams();
   const extractMenuName = (name) => {
     // '성수역점' 또는 '성수역'이 포함된 경우 앞부분만 추출
     if (name?.includes("성수역점")) {
@@ -46,6 +48,44 @@ const DetailPageLeft = (props) => {
       fetchImage();
     }
   }, [menu]); // menu를 의존성 배열에 추가합니다.
+
+  useEffect(() => {
+    const fetch1 = async () => {
+      const getid3 = await axios.get("/nickname/idd");
+      const response = await axios.get("/like/findjjim", {
+        params: {
+          userId: getid3.data,
+          restaurantId: params.detailId,
+        },
+      });
+      if (response.status === 200) {
+        setjjim(true);
+      } else {
+        setjjim(false);
+      }
+    };
+
+    fetch1();
+  }, []);
+
+  const clickHeart = async () => {
+    if (jjim === false) {
+      const getid = await axios.get("/nickname/idd");
+      await axios.post(`/detail/${params.detailId}`, {
+        userId: getid.data,
+      });
+    } else if (jjim === true) {
+      const getid2 = await axios.get("/nickname/idd");
+      await axios.delete("/like", {
+        data: {
+          userId: getid2.data,
+          restaurantId: params.detailId,
+        },
+      });
+    }
+    setjjim((prev) => !prev);
+  };
+
   return (
     <div className="detail_left_item">
       <section>
@@ -79,7 +119,15 @@ const DetailPageLeft = (props) => {
             <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
               {props.data.name}
             </span>
-            <FavoriteIcon className="like_icon" />
+            {jjim ? (
+              <FavoriteIcon
+                className="like_icon"
+                style={{ color: "gold" }}
+                onClick={clickHeart}
+              />
+            ) : (
+              <FavoriteIcon className="like_icon" onClick={clickHeart} />
+            )}
           </div>
 
           <span className="food_category">{props.data.category}</span>
