@@ -4,9 +4,10 @@ import Search from "../../components/search/search";
 import Sort from "../../components/sort/sort";
 import FooterPage from "../../components/footer/FooterPage";
 import TopButton from "../../components/navbar/Topbutton";
+
 const MainPage = () => {
   return (
-    <div>
+    <div className="main-page-wrapper">
       <HeaderPage />
       <Rank />
       <Search />
