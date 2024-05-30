@@ -4,13 +4,18 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
+import NaverMapModal from "./naverMap.modal";
 import { useEffect, useState } from "react";
+import { TbMap2 } from "react-icons/tb";
 import axios from "axios";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
   const [image, setImage] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
 
   const extractMenuName = (name) => {
     // '성수역점' 또는 '성수역'이 포함된 경우 앞부분만 추출
@@ -28,6 +33,10 @@ const DetailPageLeft = (props) => {
 
   const menu = extractMenuName(props.data?.name);
 
+  const onClickMapIcon = () => {
+    setShow((prev) => !prev);
+  };
+
   useEffect(() => {
     const fetchImage = async () => {
       try {
@@ -36,7 +45,17 @@ const DetailPageLeft = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setImage(res.data[menu]);
+        let fetchedImages = res.data[menu];
+
+        // Check if the number of images is less than 3
+        if (fetchedImages.length < 3) {
+          // Add "No Image" placeholder images until the array has at least 3 images
+          const noImage = "/img/no_img4.gif";
+          while (fetchedImages.length < 3) {
+            fetchedImages.push(noImage);
+          }
+        }
+        setImage(fetchedImages);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -47,65 +66,36 @@ const DetailPageLeft = (props) => {
     }
   }, [menu]); // menu를 의존성 배열에 추가합니다.
   return (
-    <div className="detail_left_item">
-      <section>
-        <div className="detail_img">
-          {image?.map((e, i) => {
-            return e.length > 0 ? (
-              <div className="img_div">
-                <img
-                  key={i}
-                  src={e}
-                  alt="맛집 사진"
-                  className="detail_food_img"
-                />
-              </div>
-            ) : (
-              <div className="img_div">
-                <img
-                  key={i}
-                  src={"img/no_img.jpeg"}
-                  alt="맛집 사진"
-                  className="detail_food_img"
-                />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-      <section>
-        <div className="food_info">
-          <div className="food_title_div">
-            <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
-              {props.data.name}
-            </span>
-            <FavoriteIcon className="like_icon" />
+    <>
+      <div className="detail_left_item">
+        <section>
+          <div className="detail_img">
+            {image?.map((e, i) => {
+              return (
+                <div className="img_div">
+                  <img
+                    key={i}
+                    src={e}
+                    alt="맛집 사진"
+                    className="detail_food_img"
+                    style={{ color: "rgba(0,0,0,0.1)" }}
+                  />
+                </div>
+              );
+            })}
           </div>
+        </section>
+        <section>
+          <div className="food_info">
+            <div className="food_title_div">
+              <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
+                {props.data.name}
+              </span>
+              <div>
+                <FavoriteIcon className="like_icon" />
+              </div>
+            </div>
 
-          <span className="food_category">{props.data.category}</span>
-          <div className="food_star">
-            <StarRatings
-              rating={props.data.rate}
-              starRatedColor="gold"
-              numberOfStars={5}
-              name="rating"
-              className="food_star_item"
-              starDimension="22px" // 별의 크기를 지정합니다.
-              starSpacing="2px" // 별 간의 간격을 지정합니다.
-            />
-            <span className="star_score">{props.data.rate}점</span>
-            <span className="review_count">5명의 평가</span>
-          </div>
-        </div>
-        <div className="contour_line"></div>
-        <div className="food_location_div">
-          <div className="food_location_item">
-            <FmdGoodIcon className="map_icon" />
-            <div className="food_location_text">
-              <span>{props.data.location}</span>
-              <span>
-                현재 위치로부터{" "}
-                <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
             <span className="food_category">{props.data.category}</span>
             <div className="food_star">
               <StarRatings
@@ -123,9 +113,6 @@ const DetailPageLeft = (props) => {
               </span>
             </div>
           </div>
-          <div className="food_location_item">
-            <PhoneEnabledIcon className="map_icon" />
-            <span>{props.data.phoneNumber}</span>
           <div className="contour_line"></div>
           <div className="food_location_div">
             <div className="food_location_item">
@@ -158,15 +145,22 @@ const DetailPageLeft = (props) => {
               <span>{props.data.phoneNumber}</span>
             </div>
           </div>
-        </div>
-        <div className="contour_line"></div>
-      </section>
-      <DetailReviewPage
-        data={props.data}
-        rId={props.data.id}
-        triggerRefresh={props.triggerRefresh}
-      />
-    </div>
+          <div className="contour_line"></div>
+        </section>
+        <DetailReviewPage
+          data={props.data}
+          rId={props.data.id}
+          triggerRefresh={props.triggerRefresh}
+        />
+      </div>
+      {show && (
+        <NaverMapModal
+          show={show}
+          handleClose={handleClose}
+          data={props.data}
+        />
+      )}
+    </>
   );
 };
 export default DetailPageLeft;
