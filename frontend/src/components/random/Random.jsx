@@ -1,6 +1,7 @@
 import {React,useState,useEffect,useRef} from 'react';
 import axios from 'axios';
 import HeaderPage from '../navbar/HeaderPage';
+import { useNavigate } from "react-router-dom";
 import './random.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -11,20 +12,30 @@ export default function Randomdice() {
     const [isRunning,setIsRunning]=useState(true);
     const [currentIndex,setCurrentIndex]=useState(0);
     const intervalRef = useRef(null);
+    const navigate=useNavigate();
 
+    
 
+   
     useEffect(()=>{
         const alldata=async()=>{
+            try{
             const all=await axios.get("/sort")
             const response=all.data;
             const randomdata=[]
             response.map((elem,index)=>{
                 randomdata.push({
+                    id:elem._id,
                     name:elem.name,
                     imglink: elem.imglink.replace('https://', 'http://'),
                     menu:elem.menu})
             })
             setData(randomdata)
+            }
+            catch{
+                alert("로그인하세요!")
+                navigate("/")
+            }
         }
         alldata();
     },[])
@@ -46,8 +57,6 @@ export default function Randomdice() {
     const restart=()=>{
         setIsRunning(true);
     }
-    
-    
 
 
   return (
@@ -60,8 +69,9 @@ export default function Randomdice() {
         <h2>오늘의 점심(저녁)은?</h2>
         {data.length > 0 && (
           <div className="Random">
-            
-            <Card >
+
+            <Card onClick={()=>navigate(`/main/${data[currentIndex].id}`)}>
+                
             <Card.Img src={`${data[currentIndex].imglink}`} alt={`Image ${currentIndex}`} thumbnail style={{width:"40vh",height:"40vh"}} />
             <Card.Body>
                 <Card.Title style={{fontWeight:"bold"}}><div className="Name">{data[currentIndex].name}</div></Card.Title>
