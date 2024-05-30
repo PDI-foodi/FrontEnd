@@ -107,119 +107,109 @@ const DetailPageLeft = (props) => {
   };
 
   return (
-    <>
-      <div className="detail_left_item">
-        <section>
-          <div className="detail_img">
-            {image?.map((e, i) => {
-              return (
-                <div className="img_div">
-                  <img
-                    key={i}
-                    src={e}
-                    alt="맛집 사진"
-                    className="detail_food_img"
-                    style={{ color: "rgba(0,0,0,0.1)" }}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section>
-          <div className="food_info">
-            <div className="food_title_div">
-              <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
-                {props.data.name}
-              </span>
-              {jjim ? (
-                <FavoriteIcon
-                  className="like_icon"
-                  style={{ color: "gold" }}
-                  onClick={clickHeart}
+    <div className="detail_left_item">
+      <section>
+        <div className="detail_img">
+          {image?.map((e, i) => {
+            return e.length > 0 ? (
+              <div className="img_div">
+                <img
+                  key={i}
+                  src={e}
+                  alt="맛집 사진"
+                  className="detail_food_img"
                 />
-              ) : (
-                <FavoriteIcon className="like_icon" onClick={clickHeart} />
-              )}
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className="food_info">
-            <div className="food_title_div">
-              <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
-                {props.data.name}
-              </span>
-              <div>
-                <FavoriteIcon className="like_icon" />
               </div>
-            </div>
-
-            <span className="food_category">{props.data.category}</span>
-            <div className="food_star">
-              <StarRatings
-                rating={props.data.rate}
-                starRatedColor="gold"
-                numberOfStars={5}
-                name="rating"
-                className="food_star_item"
-                starDimension="22px" // 별의 크기를 지정합니다.
-                starSpacing="2px" // 별 간의 간격을 지정합니다.
+            ) : (
+              <div className="img_div">
+                <img
+                  key={i}
+                  src={"img/no_img.jpeg"}
+                  alt="맛집 사진"
+                  className="detail_food_img"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section>
+        <div className="food_info">
+          <div className="food_title_div">
+            <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
+              {props.data.name}
+            </span>
+            {jjim ? (
+              <FavoriteIcon
+                className="like_icon"
+                style={{ color: "gold" }}
+                onClick={clickHeart}
               />
-              <span className="star_score">{props.data.rate}점</span>
-              <span className="review_count">
-                {props.data?.comments?.length}명의 평가
+            ) : (
+              <FavoriteIcon className="like_icon" onClick={clickHeart} />
+            )}
+          </div>
+
+          <span className="food_category">{props.data.category}</span>
+          <div className="food_star">
+            <StarRatings
+              rating={props.data.rate}
+              starRatedColor="gold"
+              numberOfStars={5}
+              name="rating"
+              className="food_star_item"
+              starDimension="22px" // 별의 크기를 지정합니다.
+              starSpacing="2px" // 별 간의 간격을 지정합니다.
+            />
+            <span className="star_score">{props.data.rate}점</span>
+            <span className="review_count">5명의 평가</span>
+          </div>
+        </div>
+        <div className="contour_line"></div>
+        <div className="food_location_div">
+          <div className="food_location_item">
+            <FmdGoodIcon className="map_icon" />
+            <div className="food_location_text" style={{ width: "100%" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <span>{props.data.location}</span>
+                <div className="moblie_map_icon" onClick={onClickMapIcon}>
+                  <TbMap2 className="naver_map_icon" />
+                  <span className="moblie_map_icon_text">위치보기</span>
+                </div>
+              </div>
+              <span>
+                현재 위치로부터{" "}
+                <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
               </span>
             </div>
           </div>
-          <div className="contour_line"></div>
-          <div className="food_location_div">
-            <div className="food_location_item">
-              <FmdGoodIcon className="map_icon" />
-              <div className="food_location_text" style={{ width: "100%" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    width: "100%",
-                  }}
-                >
-                  <span>{props.data.location}</span>
-                  <div className="moblie_map_icon" onClick={onClickMapIcon}>
-                    <TbMap2 className="naver_map_icon" />
-                    <span className="moblie_map_icon_text">위치보기</span>
-                  </div>
-                </div>
-                <span>
-                  현재 위치로부터{" "}
-                  <span style={{ color: "blue", fontWeight: "bold" }}>
-                    216m
-                  </span>
-                </span>
-              </div>
-            </div>
-            <div className="food_location_item">
-              <PhoneEnabledIcon className="map_icon" />
-              <span>{props.data.phoneNumber}</span>
-            </div>
+          <div className="food_location_item">
+            <PhoneEnabledIcon className="map_icon" />
+            <span>{props.data.phoneNumber}</span>
           </div>
-          <div className="contour_line"></div>
-        </section>
-        <DetailReviewPage
-          data={props.data}
-          rId={props.data.id}
-          triggerRefresh={props.triggerRefresh}
-        />
-      </div>
+        </div>
+        <div className="contour_line"></div>
+      </section>
+      <DetailReviewPage
+        data={props.data}
+        rId={props.data.id}
+        triggerRefresh={props.triggerRefresh}
+      />
       {show && (
         <NaverMapModal
           show={show}
-          handleClose={handleClose}
           data={props.data}
+          handleClose={handleClose}
         />
       )}
-    </>
+    </div>
   );
 };
 export default DetailPageLeft;
