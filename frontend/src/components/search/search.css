@@ -13,7 +13,8 @@
   border: 1px solid #ccc;
   background-color: white(184, 182, 182);
   margin: 0 auto;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   border-radius: 50px;
   margin-bottom: 20px;
 }
