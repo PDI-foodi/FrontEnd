@@ -1,0 +1,130 @@
+.find-pwd-body {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 90px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.find-pwd-comment {
+  margin-bottom: 30px;
+}
+
+.find-pwd-comment > h1 {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+.find-pwd-comment > p {
+  font-size: 17px;
+  color: #949494;
+  margin-bottom: 5px;
+}
+
+.find-pwd-input > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.find-pwd-input label {
+  margin: 0;
+  text-align: right;
+  margin-right: 10px;
+  font-weight: bolder;
+}
+
+.find-pwd-input input {
+  flex-grow: 1;
+  width: 300px;
+  height: 40px;
+  padding: 8px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d7ecd7;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* find-pwd-modal */
+
+.find-pwd-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.find-pwd-modal-content {
+  background: white;
+  padding: 35px;
+  border-radius: 44px;
+  width: 450px;
+}
+
+.find-pwd-modal-header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.find-pwd-modal-header p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.find-pwd-modal-body {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.find-pwd-modal-body > div {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.find-pwd-modal-body > div > label {
+  text-align: right;
+  font-weight: bold;
+  width: 120px;
+  padding-right: 10px;
+}
+
+.find-pwd-modal-body > div > input {
+  flex-grow: 1;
+  width: 250px;
+  height: 40px;
+  padding: 8px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d7ecd7;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+
+.password-match {
+  color: #5770ee;
+}
+
+.password-mismatch {
+  color: #ee5757;
+}
+
+.find-pwd-modal-content > button {
+  margin-top: 20px;
+  margin-left: 65%;
+}
