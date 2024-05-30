@@ -9,7 +9,7 @@
   max-width: 1200px;
   margin: 0px auto 0px auto;
 }
-.headerDiv{
+.headerDiv {
   display: flex;
   align-items: center;
 }
@@ -22,12 +22,18 @@
   height: 75px;
   cursor: pointer;
   margin-left: 50px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 630px) {
+  .logo {
+    margin-left: 20px;
+  }
 }
 
 .user_info {
   display: inline;
   margin-top: 20px;
-  margin-right: 50px;
+  margin-right: 10px;
 }
 
 .nickname {
@@ -43,25 +49,26 @@
   .header {
     font-size: 14px !important;
   }
-  .headerbutton{
+  .headerbutton {
     font-size: 14px !important;
   }
 }
 
 @media (max-width: 800px) {
-  .header{
-    font-size: 12px !important;
+  .header {
+    font-size: 14px !important;
   }
-  .headerbutton{
-    font-size: 12px !important;
+  .headerbutton {
+    font-size: 14px !important;
   }
 }
 
 @media (max-width: 400px) {
-  .header{
-    font-size: 10px !important;
+  .header {
+    font-size: 12px !important;
+    min-width: 390px;
   }
-  .headerbutton{
-    font-size: 10px !important;
+  .headerbutton {
+    font-size: 12px !important;
   }
 }
