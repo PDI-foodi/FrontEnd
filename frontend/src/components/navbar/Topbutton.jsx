@@ -13,7 +13,16 @@ export default function TopButton() {
 
   return (
     <div>
-        <BsFillArrowUpCircleFill onClick={handleScroll} style={{ position: 'fixed', bottom: '20px', right: '20px', fontSize: '24px', cursor:"pointer"}}/>
+      <BsFillArrowUpCircleFill
+        onClick={handleScroll}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          fontSize: "24px",
+          cursor: "pointer",
+        }}
+      />
     </div>
   );
 }
