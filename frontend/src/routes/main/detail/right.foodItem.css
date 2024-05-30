@@ -32,3 +32,12 @@
 .lc_icon {
   color: #36ac5e;
 }
+.detail_other_food_div {
+  display: flex;
+  justify-content: space-evenly;
+}
+.detail_other_food_img {
+  width: 110px;
+  height: 110px;
+  border-radius: 5px;
+}
