@@ -106,12 +106,57 @@ const DetailPageLeft = (props) => {
               <span>
                 현재 위치로부터{" "}
                 <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
+            <span className="food_category">{props.data.category}</span>
+            <div className="food_star">
+              <StarRatings
+                rating={props.data.rate}
+                starRatedColor="gold"
+                numberOfStars={5}
+                name="rating"
+                className="food_star_item"
+                starDimension="22px" // 별의 크기를 지정합니다.
+                starSpacing="2px" // 별 간의 간격을 지정합니다.
+              />
+              <span className="star_score">{props.data.rate}점</span>
+              <span className="review_count">
+                {props.data?.comments?.length}명의 평가
               </span>
             </div>
           </div>
           <div className="food_location_item">
             <PhoneEnabledIcon className="map_icon" />
             <span>{props.data.phoneNumber}</span>
+          <div className="contour_line"></div>
+          <div className="food_location_div">
+            <div className="food_location_item">
+              <FmdGoodIcon className="map_icon" />
+              <div className="food_location_text" style={{ width: "100%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                >
+                  <span>{props.data.location}</span>
+                  <div className="moblie_map_icon" onClick={onClickMapIcon}>
+                    <TbMap2 className="naver_map_icon" />
+                    <span className="moblie_map_icon_text">위치보기</span>
+                  </div>
+                </div>
+                <span>
+                  현재 위치로부터{" "}
+                  <span style={{ color: "blue", fontWeight: "bold" }}>
+                    216m
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div className="food_location_item">
+              <PhoneEnabledIcon className="map_icon" />
+              <span>{props.data.phoneNumber}</span>
+            </div>
           </div>
         </div>
         <div className="contour_line"></div>
