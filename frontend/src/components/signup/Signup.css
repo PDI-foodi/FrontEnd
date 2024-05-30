@@ -1,66 +1,134 @@
-.signup-body {
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 90px;
-  font-family: "Pretendard", sans-serif;
+@media (max-width: 768px) {
+  .signup-body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Pretendard", sans-serif;
+  }
+
+  .signup-comment {
+    margin-bottom: 15px;
+  }
+
+  .signup-comment > h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .signup-comment p {
+    font-size: 15px;
+    color: #949494;
+    margin-bottom: 5px;
+  }
 }
 
-.signup-comment {
-  margin-bottom: 30px;
-}
+@media (min-width: 768px) {
+  .signup-body {
+    display: flex;
+    height: 60vh;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 90px;
+    font-family: "Pretendard", sans-serif;
+  }
 
-.signup-comment > h1 {
-  font-size: 25px;
-  font-weight: bolder;
-  margin-bottom: 20px;
-}
+  .signup-comment {
+    margin-bottom: 30px;
+  }
 
-.signup-comment p {
-  font-size: 17px;
-  color: #949494;
-  margin-bottom: 5px;
+  .signup-comment > h1 {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+
+  .signup-comment p {
+    font-size: 17px;
+    color: #949494;
+    margin-bottom: 5px;
+  }
 }
 
 /*input section*/
-.signup-input > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 15px;
+@media (max-width: 768px) {
+  .signup-input {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .signup-input div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .signup-input div label {
+    font-weight: bolder;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .signup-input div input {
+    width: 260px;
+  }
+
+  .signup-input input {
+    flex-grow: 1;
+    width: 300px;
+    height: 40px;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d7ecd7;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 }
 
-.signup-input .signup-pwd-check,
-.signup-nickname {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-}
+@media (min-width: 768px) {
+  .signup-input > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+  }
 
-.signup-input label {
-  margin: 0;
-  width: 110px;
-  text-align: right;
-  margin-right: 10px;
-  font-weight: bolder;
-}
+  .signup-input .signup-pwd-check,
+  .signup-nickname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+  }
 
-.signup-input input {
-  flex-grow: 1;
-  width: 300px;
-  height: 40px;
-  padding: 8px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  background-color: #d7ecd7;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  .signup-input label {
+    margin: 0;
+    width: 110px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bolder;
+  }
+
+  .signup-input input {
+    flex-grow: 1;
+    width: 300px;
+    height: 40px;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #d7ecd7;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .password-match {
@@ -73,7 +141,7 @@
 
 .signup-pwd-check .password-message {
   font-size: 15px;
-  /* padding-right: 30px; */
+  padding-left: 5px;
 }
 
 .signup-input .signup-nickname > div:nth-child(2) {
@@ -83,16 +151,24 @@
   gap: 3px;
 }
 
-.signup-nickname .nickname-count {
-  font-size: 12px;
-  padding-left: 380px;
-  color: #949494;
+@media (max-width: 768px) {
+  .signup-nickname .nickname-count {
+    font-size: 12px;
+    color: #949494;
+  }
+}
+
+@media (min-width: 768px) {
+  .signup-nickname .nickname-count {
+    font-size: 12px;
+    padding-left: 380px;
+    color: #949494;
+  }
 }
 
 button.btn-primary {
   width: 130px;
   padding: 7px 0;
-  margin-top: 20px;
   font-size: 1rem;
   font-weight: bold;
   color: white;

@@ -1,4 +1,4 @@
-import "./HeaderPage.css";
+import "./Signup-Header.css";
 import { useNavigate } from "react-router-dom";
 
 const HeaderPage = () => {
@@ -13,7 +13,7 @@ const HeaderPage = () => {
         <img
           src="/img/pdlogo.png"
           alt="프디푸디"
-          className="logo"
+          className="signup-header-logo"
           onClick={handleCardClick}
         />
       </div>
