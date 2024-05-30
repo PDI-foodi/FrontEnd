@@ -4,14 +4,22 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import DetailReviewPage from "./detailPage.review";
+import NaverMapModal from "./naverMap.modal";
 import { useEffect, useState } from "react";
+import { TbMap2 } from "react-icons/tb";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InlzeTA2MDUzIiwibmlja25hbWUiOiLsnbTsnqzsnbgiLCJpYXQiOjE3MTY3NzQ1MjUsImV4cCI6MTcxNzAzMzcyNX0.2XG3o1SmC8yBptHP3SBZWlPTQ_w_wupaaHBTgvBq-GU";
 
 const DetailPageLeft = (props) => {
   const [image, setImage] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
 
+  const [jjim, setjjim] = useState(false);
+  const params = useParams();
   const extractMenuName = (name) => {
     // '성수역점' 또는 '성수역'이 포함된 경우 앞부분만 추출
     if (name?.includes("성수역점")) {
@@ -28,6 +36,10 @@ const DetailPageLeft = (props) => {
 
   const menu = extractMenuName(props.data?.name);
 
+  const onClickMapIcon = () => {
+    setShow((prev) => !prev);
+  };
+
   useEffect(() => {
     const fetchImage = async () => {
       try {
@@ -36,7 +48,17 @@ const DetailPageLeft = (props) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setImage(res.data[menu]);
+        let fetchedImages = res.data[menu];
+
+        // Check if the number of images is less than 3
+        if (fetchedImages.length < 3) {
+          // Add "No Image" placeholder images until the array has at least 3 images
+          const noImage = "/img/no_img4.gif";
+          while (fetchedImages.length < 3) {
+            fetchedImages.push(noImage);
+          }
+        }
+        setImage(fetchedImages);
       } catch (error) {
         console.error("Error fetching image:", error);
       }
@@ -46,6 +68,44 @@ const DetailPageLeft = (props) => {
       fetchImage();
     }
   }, [menu]); // menu를 의존성 배열에 추가합니다.
+
+  useEffect(() => {
+    const fetch1 = async () => {
+      const getid3 = await axios.get("/nickname/idd");
+      const response = await axios.get("/like/findjjim", {
+        params: {
+          userId: getid3.data,
+          restaurantId: params.detailId,
+        },
+      });
+      if (response.status === 200) {
+        setjjim(true);
+      } else {
+        setjjim(false);
+      }
+    };
+
+    fetch1();
+  }, []);
+
+  const clickHeart = async () => {
+    if (jjim === false) {
+      const getid = await axios.get("/nickname/idd");
+      await axios.post(`/detail/${params.detailId}`, {
+        userId: getid.data,
+      });
+    } else if (jjim === true) {
+      const getid2 = await axios.get("/nickname/idd");
+      await axios.delete("/like", {
+        data: {
+          userId: getid2.data,
+          restaurantId: params.detailId,
+        },
+      });
+    }
+    setjjim((prev) => !prev);
+  };
+
   return (
     <div className="detail_left_item">
       <section>
@@ -79,7 +139,15 @@ const DetailPageLeft = (props) => {
             <span style={{ fontSize: "20px", fontWeight: "bolder" }}>
               {props.data.name}
             </span>
-            <FavoriteIcon className="like_icon" />
+            {jjim ? (
+              <FavoriteIcon
+                className="like_icon"
+                style={{ color: "gold" }}
+                onClick={clickHeart}
+              />
+            ) : (
+              <FavoriteIcon className="like_icon" onClick={clickHeart} />
+            )}
           </div>
 
           <span className="food_category">{props.data.category}</span>
@@ -101,8 +169,21 @@ const DetailPageLeft = (props) => {
         <div className="food_location_div">
           <div className="food_location_item">
             <FmdGoodIcon className="map_icon" />
-            <div className="food_location_text">
-              <span>{props.data.location}</span>
+            <div className="food_location_text" style={{ width: "100%" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <span>{props.data.location}</span>
+                <div className="moblie_map_icon" onClick={onClickMapIcon}>
+                  <TbMap2 className="naver_map_icon" />
+                  <span className="moblie_map_icon_text">위치보기</span>
+                </div>
+              </div>
               <span>
                 현재 위치로부터{" "}
                 <span style={{ color: "blue", fontWeight: "bold" }}>216m</span>
@@ -121,6 +202,13 @@ const DetailPageLeft = (props) => {
         rId={props.data.id}
         triggerRefresh={props.triggerRefresh}
       />
+      {show && (
+        <NaverMapModal
+          show={show}
+          data={props.data}
+          handleClose={handleClose}
+        />
+      )}
     </div>
   );
 };
