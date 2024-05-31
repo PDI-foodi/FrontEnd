@@ -23,12 +23,6 @@
   cursor: pointer;
 }
 
-.user_info {
-  display: inline;
-  margin-top: 20px;
-  margin-right: 50px;
-}
-
 .nickname {
   display: inline;
 }

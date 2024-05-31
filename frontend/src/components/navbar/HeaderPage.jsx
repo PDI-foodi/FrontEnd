@@ -21,6 +21,30 @@ const HeaderPage = () => {
     fetchData();
   }, []);
 
+  const logoutHandling = async () => {
+    if (window.confirm("로그아웃 하시겠습니까?")) {
+      const logoutData = async () => {
+        try {
+          const response = await axios.get("/users/logout");
+
+          console.log(response.status);
+
+          if (response.status === 200) {
+            alert("로그아웃 성공!");
+            console.log(response.status);
+            navigate(`/`);
+          } else {
+            alert("로그아웃에 실패했습니다.");
+          }
+        } catch (error) {
+          alert("로그아웃에 실패했습니다.");
+          console.error("로그아웃 실패: ", error);
+        }
+      };
+      logoutData();
+    }
+  };
+
   const handleCardClick = () => {
     navigate(`/main`);
   };
@@ -40,7 +64,7 @@ const HeaderPage = () => {
           >
             오늘 뭐 먹지?
           </Button>
-          <span className="user_info">
+          <span className="user_info" onClick={logoutHandling}>
             환영합니다 <br />
             {nickname}님
           </span>
