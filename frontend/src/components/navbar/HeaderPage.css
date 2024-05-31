@@ -12,6 +12,7 @@
 .headerDiv {
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 .headerbutton {
   margin-top: 10px;
@@ -22,12 +23,17 @@
   height: 75px;
   cursor: pointer;
   margin-left: 50px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 630px) {
+  .logo {
+    margin-left: 20px;
+  }
 }
 
 .user_info {
   display: inline;
-  margin-top: 20px;
-  margin-right: 50px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -51,18 +57,19 @@
 
 @media (max-width: 800px) {
   .header {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
   .headerbutton {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 }
 
 @media (max-width: 400px) {
   .header {
-    font-size: 10px !important;
+    font-size: 12px !important;
+    min-width: 390px;
   }
   .headerbutton {
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
 }

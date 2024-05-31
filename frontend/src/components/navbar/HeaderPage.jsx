@@ -65,7 +65,8 @@ const HeaderPage = () => {
             오늘 뭐 먹지?
           </Button>
           <span className="user_info" onClick={logoutHandling}>
-            환영합니다 {nickname}님
+            환영합니다 <br />
+            {nickname}님
           </span>
         </div>
       </div>

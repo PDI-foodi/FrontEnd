@@ -8,15 +8,17 @@
   overflow-y: scroll;
 }
 .detail_img {
+  width: 100%;
+  overflow-x: auto;
   display: flex;
-  justify-content: flex-start;
-  overflow-x: scroll;
 }
+
 .img_div {
-  width: 220px;
+  width: 200px;
   height: 220px;
-  overflow-x: scroll;
+  flex-shrink: 0;
 }
+
 .detail_food_img {
   width: 100%;
   height: 100%;
@@ -82,4 +84,29 @@
   color: rgba(0, 0, 0, 0.4);
   margin-right: 10px;
   cursor: pointer;
+}
+.naver_map_icon {
+  font-size: 30px !important;
+  color: #00a44b;
+}
+.moblie_map_icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+}
+.moblie_map_icon_text {
+  width: 50px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #00a44b;
+}
+
+@media screen and (max-width: 1240px) {
+  .moblie_map_icon {
+    display: flex;
+  }
 }
