@@ -29,7 +29,7 @@ const ReviewItem = (props) => {
       setUserId(res.data);
     };
     fetchUserId();
-  }, []);
+  }, [userId]);
 
   //const onClickUpdateReview = () => {};
 
@@ -38,11 +38,12 @@ const ReviewItem = (props) => {
     const rect = spanRef.current.getBoundingClientRect();
     setModalPosition({
       top: rect.top + window.scrollY,
-      left: rect.left + window.scrollX,
+      left: rect.left + window.scrollX - 120,
     });
     setShowModal((prev) => !prev);
     const parentId = event.currentTarget.closest(".review_item").id;
-    console.log(parentId);
+    console.log("현재 리뷰:" + parentId);
+    console.log("현재 사용자:" + userId);
     setCurRId(parentId);
   };
 
@@ -58,6 +59,7 @@ const ReviewItem = (props) => {
           userId: userId,
         },
       });
+      setShowModal(false);
       props.triggerRefresh();
       alert("삭제되었습니다");
     } catch (error) {
@@ -68,7 +70,7 @@ const ReviewItem = (props) => {
 
   return (
     <>
-      <div className="review_item" id={props.id}>
+      <div className="review_item" id={props.data.id}>
         <div className="review_info_div">
           <AccountCircleIcon className="user_icon" />
           <div className="review_info">
