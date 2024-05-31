@@ -111,27 +111,15 @@ const DetailPageLeft = (props) => {
     <div className="detail_left_item">
       <section>
         <div className="detail_img">
-          {image?.map((e, i) => {
-            return e.length > 0 ? (
-              <div className="img_div">
-                <img
-                  key={i}
-                  src={e}
-                  alt="맛집 사진"
-                  className="detail_food_img"
-                />
-              </div>
-            ) : (
-              <div className="img_div">
-                <img
-                  key={i}
-                  src={"img/no_img.jpeg"}
-                  alt="맛집 사진"
-                  className="detail_food_img"
-                />
-              </div>
-            );
-          })}
+          {image?.map((e, i) => (
+            <div className="img_div" key={i}>
+              <img
+                src={e.length > 0 ? e : "img/no_img.jpeg"}
+                alt="맛집 사진"
+                className="detail_food_img"
+              />
+            </div>
+          ))}
         </div>
       </section>
       <section>

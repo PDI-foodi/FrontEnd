@@ -35,7 +35,7 @@ const ReviewUpdateModal = (props) => {
         content: contents,
         rate: rate,
       });
-      props.setShow(true);
+      props.setShow(false);
       props.setShowModal(false);
       alert("리뷰가 수정되었습니다,");
       props.triggerRefresh();
